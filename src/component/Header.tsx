@@ -1,47 +1,26 @@
-"use client";
-
 import { useState } from "react";
 import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel } from "@headlessui/react";
-import {
-  ArrowUpAz,
-  BarChart,
-  ChevronDown,
-  Fingerprint,
-  Hamburger,
-  Home,
-  Info,
-  List,
-  Menu,
-  NotebookPen,
-  PhoneCall,
-  PieChart,
-  PlayCircle,
-  ShieldUser,
-  SquarePlus,
-  TextCursor,
-  Wrench,
-  X,
-} from "lucide-react";
+import { ChevronDown, Home, Info, List, Menu, NotebookPen, PhoneCall, PlayCircle, ShieldUser, Wrench, X } from "lucide-react";
 
 const menu = [
   {
-    title: "Главная",
+    title: "Asosiy",
     href: "",
     children: [
-      { name: "Главная", description: "Узнайте больше о наших услугах и преимуществах", href: "#", icon: Home },
-      { name: "О нас", description: "Познакомьтесь с нашей историей и миссией", href: "#", icon: Info },
-      { name: "Работайте с нами", description: "Присоединяйтесь к нашей команде профессионалов", href: "#", icon: Wrench },
-      { name: "Что мы предлагаем", description: "Ознакомьтесь с полным спектром наших услуг", href: "#", icon: List },
-      { name: "Наша команда", description: "Узнайте о наших специалистах и их опыте", href: "#", icon: ShieldUser },
-      { name: "Контакты", description: "Свяжитесь с нами для консультации или вопросов", href: "#", icon: NotebookPen },
+      { name: "Asosiy", description: "Узнайте больше о наших услугах и преимуществах", href: "#main", icon: Home },
+      { name: "Biz haqimizda", description: "Познакомьтесь с нашей историей и миссией", href: "#aboutUs", icon: Info },
+      { name: "Natijalarimiz", description: "Присоединяйтесь к нашей команде профессионалов", href: "#results", icon: Wrench },
+      { name: "Xizmatlar", description: "Ознакомьтесь с полным спектром наших услуг", href: "#services", icon: List },
+      { name: "Bizning jamoa", description: "Узнайте о наших специалистах и их опыте", href: "#team", icon: ShieldUser },
+      { name: "Aloqa", description: "Свяжитесь с нами для консультации или вопросов", href: "#contact", icon: NotebookPen },
     ],
     callsToAction: [
       { name: "Посмотреть демо", href: "https://www.youtube.com/watch?v=Q9vyqxWs7nI", icon: PlayCircle },
-      { name: "Позвонить", href: "tel:+998954397101", icon: PhoneCall },
+      { name: "Qo'ng'iroq qilish", href: "tel:+998954397101", icon: PhoneCall },
     ],
   },
-  { title: "Блог", href: "", children: [] },
-  { title: "Контакты", href: "", children: [] },
+  { title: "Blog", href: "/blog", children: [] },
+  { title: "Aloqa", href: "#contact", children: [] },
 ];
 
 export default function Header() {
@@ -53,7 +32,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img alt="" src="/logo.png" className="h-10 w-auto" />
+            <img alt="" src="/logo.png" className="h-14 w-auto" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -74,7 +53,7 @@ export default function Header() {
                   <>
                     <Popover className="relative">
                       <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 focus:outline-none focus:ring-0 cursor-pointer hover:bg-gray-100 !pl-3 pr-2 py-1 rounded-md !gap-2">
-                        Главная
+                        Menu
                         <ChevronDown aria-hidden="true" className="size-5 flex-none text-black" />
                       </PopoverButton>
 
@@ -84,7 +63,7 @@ export default function Header() {
                       >
                         <div className="p-4">
                           {m.children.map((item) => (
-                            <div key={item.name} className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50">
+                            <PopoverButton key={item.name} className="group relative flex items-center gap-x-6 rounded-lg p-1 text-sm/6 hover:bg-gray-50">
                               <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                 <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-primary" />
                               </div>
@@ -93,21 +72,9 @@ export default function Header() {
                                   {item.name}
                                   <span className="absolute inset-0" />
                                 </a>
-                                <p className="mt-1 text-gray-600">{item.description}</p>
+                                {/* <p className="mt-1 text-gray-600">{item.description}</p> */}
                               </div>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                          {m.callsToAction!.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
-                            >
-                              <item.icon aria-hidden="true" className="size-5 flex-none text-gray-400" />
-                              {item.name}
-                            </a>
+                            </PopoverButton>
                           ))}
                         </div>
                       </PopoverPanel>
@@ -125,11 +92,11 @@ export default function Header() {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
-            className="py-3 px-4 inline-flex rounded-full justify-center items-center gap-x-2 text-sm font-medium border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+            className="py-3 px-4 inline-flex rounded-full justify-center items-center gap-x-2 text-sm font-medium border border-transparent bg-primary text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
             href="#"
           >
             <PhoneCall strokeWidth={2} size={16} />
-            Позвонить
+            Qo'ng'iroq qilish
           </a>
         </div>
       </nav>
@@ -139,7 +106,7 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img alt="" src="/logo.png" className="h-8 w-auto" />
+              <img alt="" src="/logo.png" className="h-14 w-auto" />
             </a>
             <button type="button" onClick={() => setMobileMenuOpen(false)} className="-m-2.5 rounded-md p-2.5 text-gray-700">
               <span className="sr-only">Close menu</span>

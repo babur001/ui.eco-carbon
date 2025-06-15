@@ -1,40 +1,51 @@
-import { PhoneCall } from "lucide-react";
+import { ArrowDown, PhoneCall } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    if (videoRef.current) {
+      setTimeout(() => {
+        videoRef.current!.play();
+      }, 300);
+    }
+  }, []);
+
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      {/* Grid */}
-      <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
+    <div id="main" className="px-4 sm:px-6 lg:px-8 pt-10">
+      <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-10 md:items-center">
         <div>
           <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight">
-            Профессиональные сантехнические услуги – <span className="text-primary">быстро, надежно, доступно!</span>
+            Atrof-muhit uchun – <span className="text-primary block">innovatsion yechimlar bilan!</span>
           </h1>
-          <p className="mt-3 text-lg text-gray-800">
-            Ремонт, установка и обслуживание сантехники любого уровня сложности. Мы решим ваши проблемы с водой и отоплением качественно и в срок!
+          <p className="mt-3 text-base text-gray-800">
+            "Ekocarbon Services" MCHJ O‘zbekiston gaz infratuzilmasida ekologik xavfsizlikni ta’minlash va iqlim o‘zgarishiga qarshi kurashish bo‘yicha yetakchi
+            kompaniyalardan biridir. Biz xalqaro hamkorlik va ilg‘or texnologiyalar yordamida gaz sizib chiqishini aniqlash, tuzatish va emissiyalarni
+            kamaytirish bo‘yicha samarali echimlar taklif qilamiz.
           </p>
 
           {/* Buttons */}
 
           <div className="mt-7 grid gap-3 w-full sm:inline-flex">
             <a
-              className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+              className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-primary text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
               href="#"
             >
               <PhoneCall strokeWidth={2} size={16} />
-              Позвонить
+              Qo'ng'iroq qilish
             </a>
             <a
               className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
               href="#"
             >
-              Оставить заявку
+              <ArrowDown size={20} strokeWidth={1} />
+              Ariza qoldirish
             </a>
           </div>
           {/* End Buttons */}
 
           {/* Review */}
           <div className="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
-            {/* Review */}
             <div className="py-5">
               <div className="flex gap-x-1">
                 <svg className="size-4 text-gray-800" width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +81,7 @@ export default function Hero() {
               </div>
 
               <p className="mt-3 text-sm text-gray-800">
-                <span className="font-bold">4.6</span> /5 - На основе более 12 000 отзывов
+                <span className="font-bold">4.6</span> /5 - 12 000 dan ortiq sharhlar asosida
               </p>
 
               <div className="mt-5">
@@ -104,20 +115,25 @@ export default function Hero() {
           </div>
           {/* End Review */}
         </div>
-        {/* End Col */}
 
-        <div className="relative ms-4 pb-5">
-          <img
-            className="max-h-[650px] object-cover w-full rounded-md"
-            src="https://plus.unsplash.com/premium_photo-1664298059861-1560b39fb890?q=80&w=2788&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Hero Image"
-          />
+        <div className="relative pb-5">
+          <video
+            ref={videoRef}
+            muted
+            autoPlay
+            controls
+            className="max-h-[500px] object-contain w-full rounded-md"
+            //
+          >
+            <source
+              src="https://cdn-cf-east.streamable.com/video/mp4/nfydgh.mp4?Expires=1750248635440&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ&Signature=Ut4S-wXGtgKUi3VviefugBFky6fZYD9rN7LKUsoSuAwoMdpwPA-TmxwxsDiy0TLiN1Y~lXH6IQY9uS1OBGtIWl~05eLDnpr~TZBItSCWtH8EE1rWLayD66QYlyU0w8Eins9y3~4izjwf1Rr1H6CRewHG6O6mYTgFaRq3u2~mxT1dG2kQzUHfiFyZ2fuhVh3MKRyRJ3B0XhITpNxOXgp8j0L-2itKtdU4mOwtGB1PxUqb8hFirpM1mv-stR1SuG0WdFt4yJi4jBTZn8Rbp2ShFJ6~DU7We0zsvCv1RgR1HpbrAlmxYU8kfXvz~F33KIuD~xVYBIoaKlMIHzqtu7Y1bw__"
+              type="video/mp4"
+            />
+          </video>
 
           <div className="absolute inset-0 -z-1 bg-linear-to-tr from-gray-200 via-white/0 to-white/0 size-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6"></div>
         </div>
-        {/* End Col */}
       </div>
-      {/* End Grid */}
     </div>
   );
 }

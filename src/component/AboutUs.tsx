@@ -1,100 +1,92 @@
-import React from "react";
+import { Check } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
+
+const aboutUsList = [
+  {
+    title: `Kompaniya 2021 yil tashkil topgan bolib 2023 yildan Hududgaztaminot bilan ekologik proekt ustida ishlamoqda. 2023 mart oyida Amerikaning Climate Compas LLS va Gas Green Asia MCHJ bilan investitsion shartnomlar tuzilib. Toshkent shahri va viloyatida exprement tariqasida ish boshlash uchun kelishuvga erishildi. 2023 yil iyun oyidan Toshkent shahri va viloyatida, sentyabr oyidan boshqa viloyatlarda ish tashkil etildi. Ish jaroyani shundan iboratki xodimlar (GTP) gaz taqsimlash punktlari va (RD) regulyator davlenilardan sizib chiqyotgan korbanad angidrid gazlarini maxsus AQSH dan keltirilgan uskunalar yordamida tekshirilib tamirilash ishlari bajariladi. "EkoCarbon Services" va "Climate Compass" boshchiligidagi ilg'or gaz sizib chiqishlarni aniqlash va ta'mirlash dasturi O'zbekistonning gaz taqsimlash tizimidagi 52 000 dan ortiq alohida gaz sizib chiqish xolatlarni topdi va ta'mirladi,
+bu esa yiliga deyarli 8-million CO₂ emissiyasini oldini oladi.`,
+  },
+  {
+    title: `"Ekocarbon Services" MCHJ – 2021 yilda tashkil topgan bo‘lib, 2023 yildan boshlab “Hududgaztaminot” bilan hamkorlikda O‘zbekiston gaz taqsimlash tizimida ekologik loyiha ustida ishlamoqda.
+2023 yil mart oyida kompaniya AQSHning "Climate Compass" LLC va "Gas Green Asia" MCHJ bilan investitsion shartnomalar tuzib, Toshkent shahri va viloyatida eksperimental loyihalarni boshladi. 2023 yil iyunidan boshlab Toshkent shahri va viloyatida ,sentyabrdan  loyiha boshqa viloyatlarda ham joriy etildi.`,
+  },
+  {
+    title: `Kompaniyamiz “Climate Compass” boshchiligida O‘zbekistonda gaz sizib chiqishini aniqlash va tuzatishga qaratilgan ilg‘or dasturlarni amalga oshirmoqda. Shu vaqtgacha 52 000 dan ortiq gaz sizib chiqish holatlari aniqlanib, muvaffaqiyatli ta’mirlandi — bu yiliga 8 million tonnagacha CO₂ ekvivalentiga teng emissiyaning oldini olish imkonini berdi.`,
+  },
+];
+
+const title = "Biz haqimizda";
+
+const images = [
+  "https://images.unsplash.com/photo-1605629921711-2f6b00c6bbf4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80",
+  "https://images.unsplash.com/photo-1600194992440-50b26e0a0309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80",
+];
 
 export default function AboutUs() {
   return (
-    <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
-      <h3 className="text-4xl font-bold text-center py-12">О нас</h3>
-      {/* Grid */}
-      <div className="lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
-        <div className="lg:col-span-7">
-          {/* Grid */}
-          <div className="grid grid-cols-12 gap-2 sm:gap-6 items-center lg:-translate-x-10">
-            <div className="col-span-4">
-              <img
-                className="rounded-xl"
-                src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-                alt="Features Image"
-              />
-            </div>
-            {/* End Col */}
+    <div id="aboutUs" className="container mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+      <h3 className="text-4xl font-bold text-center py-12">{title}:</h3>
 
-            <div className="col-span-3">
-              <img
-                className="rounded-xl"
-                src="https://images.unsplash.com/photo-1605629921711-2f6b00c6bbf4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-                alt="Features Image"
-              />
-            </div>
-            {/* End Col */}
-
+      <div className="lg:grid lg:grid-cols-12 lg:gap-5 lg:items-center">
+        <div className="lg:col-span-6">
+          <SliderImages />
+          {/* <div className="grid grid-cols-12 gap-2 sm:gap-6 items-center lg:-translate-x-10">
             <div className="col-span-5">
-              <img
-                className="rounded-xl"
-                src="https://images.unsplash.com/photo-1600194992440-50b26e0a0309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-                alt="Features Image"
-              />
+              <img className="rounded-xl" src={images[0]} alt="Features Image" />
             </div>
-            {/* End Col */}
-          </div>
-          {/* End Grid */}
-        </div>
-        {/* End Col */}
 
-        <div className="mt-5 sm:mt-10 lg:mt-0 lg:col-span-5">
-          <div className="space-y-6 sm:space-y-8">
-            {/* Title */}
-            <div className="space-y-2 md:space-y-4">
-              <h2 className="font-bold text-3xl lg:text-4xl text-gray-800">Немного о нас</h2>
-              <p className="text-gray-500">
-                О нашей компании Мы — команда опытных сантехников, которая заботится о вашем комфорте и безопасности. Предлагаем качественные услуги по ремонту,
-                установке и обслуживанию сантехники и систем отопления.
-                <br />
-                <br />
-                Работаем быстро, надежно и с использованием современных материалов. Для нас важен индивидуальный подход и удовлетворение каждого клиента.
-              </p>
+            <div className="col-span-7">
+              <img className="rounded-xl" src={images[1]} alt="Features Image" />
             </div>
-            {/* End Title */}
-
-            {/* List */}
-            <ul className="space-y-2 sm:space-y-4">
-              {[
-                { title: "Опытные и квалифицированные специалисты" },
-                { title: "Гарантия качества и надежности" },
-                { title: "Быстрое выполнение работ" },
-                { title: "Индивидуальный подход к каждому клиенту" },
-                { title: "Честные и прозрачные цены" },
-              ].map((pro) => {
-                return (
-                  <li key={pro.title} className="flex gap-x-3">
-                    <span className="mt-0.5 size-5 flex justify-center items-center rounded-full bg-primary text-blue-50">
-                      <svg
-                        className="shrink-0 size-3.5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                    </span>
-                    <div className="grow">
-                      <span className="text-sm sm:text-base text-gray-500">{pro.title}</span>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-            {/* End List */}
-          </div>
+          </div> */}
         </div>
-        {/* End Col */}
+
+        <div className="mt-5 sm:mt-10 lg:mt-0 lg:col-span-6">
+          <ul className="space-y-2 sm:space-y-4">
+            {aboutUsList.map((pro) => {
+              return (
+                <li key={pro.title} className="flex gap-x-3">
+                  <span className="mt-0.5 p-1 size-5 flex justify-center items-center rounded-full bg-primary text-blue-50">
+                    <Check />
+                  </span>
+
+                  <div className="grow">
+                    <span className="text-sm sm:text-base text-gray-500">{pro.title}</span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
-      {/* End Grid */}
     </div>
   );
 }
+
+const SliderImages = () => {
+  const items = new Array(13).fill(0).map((_, index) => `/people/${index + 1}.jpg`);
+
+  return (
+    <div>
+      <Swiper
+        autoplay={true}
+        navigation={true}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={1}
+        modules={[Navigation, Autoplay]}
+        className="max-h-[700px] aspect-square rounded-xl overflow-hidden"
+      >
+        {items.map((item, index) => (
+          <SwiperSlide key={index} className="rounded-xl overflow-hidden">
+            <img src={item} alt="" className="w-full aspect-square object-cover" />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+};
