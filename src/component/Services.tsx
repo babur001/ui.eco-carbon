@@ -1,7 +1,10 @@
 import { Dot } from "lucide-react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Services() {
+  const { t } = useTranslation();
+
   return (
     <div id="services" className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <div className="aspect-w-16 aspect-h-7">
@@ -10,22 +13,22 @@ export default function Services() {
 
       {[
         {
-          title: "🛠 Xizmatlar",
+          title: t("🛠 Xizmatlar"),
           children: [
-            { title: "(GTP) Gaz taqsimlash punktlari va (RD) regulyator davlenilardagi gaz sizib chiqishini aniqlash" },
-            { title: "AQSHdan keltirilgan zamonaviy gaz aniqlash texnologiyalari yordamida tahlil " },
-            { title: "Yevropadan olib kelingan yuqori sifatli ehtiyot qismlar bilan ta’mirlash " },
-            { title: "Atrof-muhitga zararli gazlar chiqishini kamaytirish " },
+            { title: t("(GTP) Gaz taqsimlash punktlari va (RD) regulyator davlenilardagi gaz sizib chiqishini aniqlash") },
+            { title: t("AQSHdan keltirilgan zamonaviy gaz aniqlash texnologiyalari yordamida tahlil ") },
+            { title: t("Yevropadan olib kelingan yuqori sifatli ehtiyot qismlar bilan ta’mirlash ") },
+            { title: t("Atrof-muhitga zararli gazlar chiqishini kamaytirish ") },
           ],
         },
         {
-          title: "🌍 Loyihalar va yutuqlar",
+          title: t("🌍 Loyihalar va yutuqlar"),
           children: [
-            { title: "52.000+ ta gaz sizib chiqish holati aniqlanib, ta'mirlandi" },
-            { title: "8-million tonna CO₂ ekvivalentidan ortiq emissiyaning oldi olindi" },
-            { title: "BeZero Carbon reytingida “AA” baho" },
-            { title: "VERRA tomonidan tasdiqlangan karbon bloklari (VCU) chiqarildi" },
-            { title: "Respublikamizning deyarli barcha hududlarida faoliyat olib borilmoqda " },
+            { title: t("52.000+ ta gaz sizib chiqish holati aniqlanib, ta'mirlandi") },
+            { title: t("8-million tonna CO₂ ekvivalentidan ortiq emissiyaning oldi olindi") },
+            { title: t("BeZero Carbon reytingida “AA” baho") },
+            { title: t("VERRA tomonidan tasdiqlangan karbon bloklari (VCU) chiqarildi") },
+            { title: t("Respublikamizning deyarli barcha hududlarida faoliyat olib borilmoqda ") },
           ],
         },
       ].map((block) => {
@@ -47,7 +50,6 @@ export default function Services() {
 
                         <div className="grow">
                           <h3 className="text-base/5 text-gray-800">{block.title}</h3>
-                          {/* <p className="mt-1 text-gray-600">{block.desc}</p> */}
                         </div>
                       </div>
                     );

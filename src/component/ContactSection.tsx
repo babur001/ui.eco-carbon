@@ -1,10 +1,12 @@
 import { Building } from "lucide-react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ContactSection() {
+  const { t } = useTranslation();
   const companyInfo = {
     contact: {
-      address: "Toshkent,Yunusobod tumani Zarafshon ko’chasi, 21-uy",
+      address: t("address"),
       phone: "+998954397101",
       email: "santexnika@yandex.com",
     },
@@ -14,19 +16,18 @@ export default function ContactSection() {
     <section id="contact" className="md:py-24 !py-5">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mx-auto text-center mb-10 lg:mb-14">
-          <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">📞 Aloqa</h2>
-          {/* <p className="mt-1 text-gray-600">Есть вопросы о наших продуктах? Свяжитесь с нами.</p> */}
+          <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">📞 {t("Aloqa")}</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="bg-white/80 backdrop-blur-md border border-white/20 shadow-lg p-8 rounded-2xl">
-            <h3 className="text-2xl font-medium mb-6">{"Контактная информация"}</h3>
+            <h3 className="text-2xl font-medium mb-6">{t("Bog'lanish uchun")}</h3>
 
             <div className="space-y-6 mb-8">
               <div className="flex items-center space-x-4">
                 <Building className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">{"Компания"}</p>
+                  <p className="font-medium">{t("Korxona")}</p>
                   <p className="!my-0 font-medium">"EkoCarbon Services", "Climate Compass"</p>
                 </div>
               </div>
@@ -48,7 +49,7 @@ export default function ContactSection() {
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
                 <div>
-                  <p className="font-medium">{"Адрес"}</p>
+                  <p className="font-medium">{t("Address")}</p>
                   <a
                     href="https://yandex.uz/maps/10335/tashkent/?from=mapframe&ll=69.286131%2C41.324718&mode=usermaps&source=mapframe&um=constructor%3A5ae1e7ef2e099beab857784842b3021a93263f958b6ca09ae9c5255137235493&utm_source=mapframe&z=14"
                     target="_blank"
@@ -75,7 +76,7 @@ export default function ContactSection() {
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
                 <div>
-                  <p className="font-medium">{"Телефон"}</p>
+                  <p className="font-medium">{t("Telefon")}</p>
                   <a href="tel:+998954397101" className="text-muted-foreground">
                     {companyInfo.contact.phone}
                   </a>
@@ -99,7 +100,7 @@ export default function ContactSection() {
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
                 <div>
-                  <p className="font-medium">{"Email"}</p>
+                  <p className="font-medium">{t("Email")}</p>
                   <a href="mailto:foodsfruits@yandex.com" className="text-muted-foreground">
                     {companyInfo.contact.email}
                   </a>

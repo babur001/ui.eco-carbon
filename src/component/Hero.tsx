@@ -1,7 +1,9 @@
 import { ArrowDown, PhoneCall } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
+  const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     if (videoRef.current) {
@@ -16,15 +18,13 @@ export default function Hero() {
       <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-10 md:items-center">
         <div>
           <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight">
-            Atrof-muhit uchun – <span className="text-primary block">innovatsion yechimlar bilan!</span>
+            {t("Atrof-muhit uchun")} – <span className="text-primary block">{t("innovatsion yechimlar bilan")}!</span>
           </h1>
           <p className="mt-3 text-base text-gray-800">
-            "Ekocarbon Services" MCHJ O‘zbekiston gaz infratuzilmasida ekologik xavfsizlikni ta’minlash va iqlim o‘zgarishiga qarshi kurashish bo‘yicha yetakchi
+            {t(`"Ekocarbon Services" MCHJ O‘zbekiston gaz infratuzilmasida ekologik xavfsizlikni ta’minlash va iqlim o‘zgarishiga qarshi kurashish bo‘yicha yetakchi
             kompaniyalardan biridir. Biz xalqaro hamkorlik va ilg‘or texnologiyalar yordamida gaz sizib chiqishini aniqlash, tuzatish va emissiyalarni
-            kamaytirish bo‘yicha samarali echimlar taklif qilamiz.
+            kamaytirish bo‘yicha samarali echimlar taklif qilamiz.`)}
           </p>
-
-          {/* Buttons */}
 
           <div className="mt-7 grid gap-3 w-full sm:inline-flex">
             <a
@@ -32,19 +32,17 @@ export default function Hero() {
               href="#"
             >
               <PhoneCall strokeWidth={2} size={16} />
-              Qo'ng'iroq qilish
+              {t("Qo'ng'iroq qilish")}
             </a>
             <a
               className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
               href="#"
             >
               <ArrowDown size={20} strokeWidth={1} />
-              Ariza qoldirish
+              {t("Ariza qoldirish")}
             </a>
           </div>
-          {/* End Buttons */}
 
-          {/* Review */}
           <div className="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
             <div className="py-5">
               <div className="flex gap-x-1">
@@ -81,11 +79,10 @@ export default function Hero() {
               </div>
 
               <p className="mt-3 text-sm text-gray-800">
-                <span className="font-bold">4.6</span> /5 - 12 000 dan ortiq sharhlar asosida
+                <span className="font-bold">4.6</span> /5 - 12 000 {t("dan ortiq sharhlar asosida")}
               </p>
 
               <div className="mt-5">
-                {/* Star */}
                 <svg className="h-auto w-16 text-gray-800" width="80" height="27" viewBox="0 0 80 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M20.558 9.74046H11.576V12.3752H17.9632C17.6438 16.0878 14.5301 17.7245 11.6159 17.7245C7.86341 17.7245 4.58995 14.7704 4.58995 10.6586C4.58995 6.62669 7.70373 3.51291 11.6159 3.51291C14.6498 3.51291 16.4063 5.42908 16.4063 5.42908L18.2426 3.51291C18.2426 3.51291 15.8474 0.878184 11.4961 0.878184C5.94724 0.838264 1.67578 5.50892 1.67578 10.5788C1.67578 15.5289 5.70772 20.3592 11.6558 20.3592C16.8854 20.3592 20.7177 16.8063 20.7177 11.4969C20.7177 10.3792 20.558 9.74046 20.558 9.74046Z"
@@ -109,11 +106,9 @@ export default function Hero() {
                   />
                   <path d="M62.9531 19.9999H65.7076V1.47693H62.9531V19.9999Z" fill="currentColor" />
                 </svg>
-                {/* End Star */}
               </div>
             </div>
           </div>
-          {/* End Review */}
         </div>
 
         <div className="relative pb-5">

@@ -1,30 +1,30 @@
 import { Check } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
+import i18next from "i18next";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 
 const aboutUsList = [
   {
-    title: `Kompaniya 2021 yil tashkil topgan bolib 2023 yildan Hududgaztaminot bilan ekologik proekt ustida ishlamoqda. 2023 mart oyida Amerikaning Climate Compas LLS va Gas Green Asia MCHJ bilan investitsion shartnomlar tuzilib. Toshkent shahri va viloyatida exprement tariqasida ish boshlash uchun kelishuvga erishildi. 2023 yil iyun oyidan Toshkent shahri va viloyatida, sentyabr oyidan boshqa viloyatlarda ish tashkil etildi. Ish jaroyani shundan iboratki xodimlar (GTP) gaz taqsimlash punktlari va (RD) regulyator davlenilardan sizib chiqyotgan korbanad angidrid gazlarini maxsus AQSH dan keltirilgan uskunalar yordamida tekshirilib tamirilash ishlari bajariladi. "EkoCarbon Services" va "Climate Compass" boshchiligidagi ilg'or gaz sizib chiqishlarni aniqlash va ta'mirlash dasturi O'zbekistonning gaz taqsimlash tizimidagi 52 000 dan ortiq alohida gaz sizib chiqish xolatlarni topdi va ta'mirladi,
-bu esa yiliga deyarli 8-million CO₂ emissiyasini oldini oladi.`,
+    title:
+      i18next.t(`Kompaniya 2021 yil tashkil topgan bolib 2023 yildan Hududgaztaminot bilan ekologik proekt ustida ishlamoqda. 2023 mart oyida Amerikaning Climate Compas LLS va Gas Green Asia MCHJ bilan investitsion shartnomlar tuzilib. Toshkent shahri va viloyatida exprement tariqasida ish boshlash uchun kelishuvga erishildi. 2023 yil iyun oyidan Toshkent shahri va viloyatida, sentyabr oyidan boshqa viloyatlarda ish tashkil etildi. Ish jaroyani shundan iboratki xodimlar (GTP) gaz taqsimlash punktlari va (RD) regulyator davlenilardan sizib chiqyotgan korbanad angidrid gazlarini maxsus AQSH dan keltirilgan uskunalar yordamida tekshirilib tamirilash ishlari bajariladi. "EkoCarbon Services" va "Climate Compass" boshchiligidagi ilg'or gaz sizib chiqishlarni aniqlash va ta'mirlash dasturi O'zbekistonning gaz taqsimlash tizimidagi 52 000 dan ortiq alohida gaz sizib chiqish xolatlarni topdi va ta'mirladi,
+bu esa yiliga deyarli 8-million CO₂ emissiyasini oldini oladi.`),
   },
   {
-    title: `"Ekocarbon Services" MCHJ – 2021 yilda tashkil topgan bo‘lib, 2023 yildan boshlab “Hududgaztaminot” bilan hamkorlikda O‘zbekiston gaz taqsimlash tizimida ekologik loyiha ustida ishlamoqda.
-2023 yil mart oyida kompaniya AQSHning "Climate Compass" LLC va "Gas Green Asia" MCHJ bilan investitsion shartnomalar tuzib, Toshkent shahri va viloyatida eksperimental loyihalarni boshladi. 2023 yil iyunidan boshlab Toshkent shahri va viloyatida ,sentyabrdan  loyiha boshqa viloyatlarda ham joriy etildi.`,
+    title:
+      i18next.t(`"Ekocarbon Services" MCHJ – 2021 yilda tashkil topgan bo‘lib, 2023 yildan boshlab “Hududgaztaminot” bilan hamkorlikda O‘zbekiston gaz taqsimlash tizimida ekologik loyiha ustida ishlamoqda.
+2023 yil mart oyida kompaniya AQSHning "Climate Compass" LLC va "Gas Green Asia" MCHJ bilan investitsion shartnomalar tuzib, Toshkent shahri va viloyatida eksperimental loyihalarni boshladi. 2023 yil iyunidan boshlab Toshkent shahri va viloyatida ,sentyabrdan  loyiha boshqa viloyatlarda ham joriy etildi.`),
   },
   {
-    title: `Kompaniyamiz “Climate Compass” boshchiligida O‘zbekistonda gaz sizib chiqishini aniqlash va tuzatishga qaratilgan ilg‘or dasturlarni amalga oshirmoqda. Shu vaqtgacha 52 000 dan ortiq gaz sizib chiqish holatlari aniqlanib, muvaffaqiyatli ta’mirlandi — bu yiliga 8 million tonnagacha CO₂ ekvivalentiga teng emissiyaning oldini olish imkonini berdi.`,
+    title: i18next.t(
+      `Kompaniyamiz “Climate Compass” boshchiligida O‘zbekistonda gaz sizib chiqishini aniqlash va tuzatishga qaratilgan ilg‘or dasturlarni amalga oshirmoqda. Shu vaqtgacha 52 000 dan ortiq gaz sizib chiqish holatlari aniqlanib, muvaffaqiyatli ta’mirlandi — bu yiliga 8 million tonnagacha CO₂ ekvivalentiga teng emissiyaning oldini olish imkonini berdi.`
+    ),
   },
 ];
 
-const title = "Biz haqimizda";
-
-const images = [
-  "https://images.unsplash.com/photo-1605629921711-2f6b00c6bbf4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80",
-  "https://images.unsplash.com/photo-1600194992440-50b26e0a0309?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80",
-];
+const title = i18next.t("Biz haqimizda");
 
 export default function AboutUs() {
   return (
@@ -34,15 +34,6 @@ export default function AboutUs() {
       <div className="lg:grid lg:grid-cols-12 lg:gap-5 lg:items-center">
         <div className="lg:col-span-6">
           <SliderImages />
-          {/* <div className="grid grid-cols-12 gap-2 sm:gap-6 items-center lg:-translate-x-10">
-            <div className="col-span-5">
-              <img className="rounded-xl" src={images[0]} alt="Features Image" />
-            </div>
-
-            <div className="col-span-7">
-              <img className="rounded-xl" src={images[1]} alt="Features Image" />
-            </div>
-          </div> */}
         </div>
 
         <div className="mt-5 sm:mt-10 lg:mt-0 lg:col-span-6">
@@ -83,7 +74,7 @@ const SliderImages = () => {
       >
         {items.map((item, index) => (
           <SwiperSlide key={index} className="rounded-xl overflow-hidden">
-            <img src={item} alt="" className="w-full aspect-square object-cover" />
+            <img src={item} className="w-full aspect-square object-cover" />
           </SwiperSlide>
         ))}
       </Swiper>

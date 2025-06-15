@@ -1,9 +1,13 @@
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+
 const stats = [
-  { name: "Gazsizib chiqish holatlari aniqlandi", value: "52 000" },
-  { name: "Tonnagacha CO₂ ekvivalentiga teng emissiyaning oldini olish imkonini berdi.", value: "8 000 000" },
+  { name: i18next.t("Gazsizib chiqish holatlari aniqlandi"), value: "52 000" },
+  { name: i18next.t("Tonnagacha CO₂ ekvivalentiga teng emissiyaning oldini olish imkonini berdi."), value: "8 000 000" },
 ];
 
 export default function WorkWithUs() {
+  const { t } = useTranslation();
   return (
     <div id="results" className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img src={`/people/13.jpg`} className="absolute inset-0 -z-10 size-full object-cover object-right md:object-center" />
@@ -11,9 +15,9 @@ export default function WorkWithUs() {
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-50">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">Climate Compass</h2>
+          <h2 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">EkoCarbon Services</h2>
           <p className="mt-8 text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
-            O'zbekistonda gaz sizib chiqishini aniqlash vatuzatishga qaratilgan ilg'or dasturlarni amalga oshirmoqda. Shu vaqtgacha:
+            {t("O'zbekistonda gaz sizib chiqishini aniqlash vatuzatishga qaratilgan ilg'or dasturlarni amalga oshirmoqda. Shu vaqtgacha:")}
           </p>
         </div>
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
