@@ -34,7 +34,9 @@ export default function Header() {
             <img alt={"Logo Alt"} src="/logo.png" className="h-14 w-auto" />
           </a>
         </div>
-        <div className="flex lg:hidden">
+        <div className="flex gap-5 lg:hidden">
+          <LanguagePicker activeLang={locale} />
+
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
@@ -94,9 +96,12 @@ export default function Header() {
             <a href="#" className="-m-1.5 p-1.5">
               <img alt={"Logo Alt"} src="/logo.png" className="h-14 w-auto" />
             </a>
-            <button type="button" onClick={() => setMobileMenuOpen(false)} className="-m-2.5 rounded-md p-2.5 text-gray-700">
-              <X aria-hidden="true" className="size-6" />
-            </button>
+
+            <div className="flex">
+              <button type="button" onClick={() => setMobileMenuOpen(false)} className="-m-2.5 rounded-md p-2.5 text-gray-700">
+                <X aria-hidden="true" className="size-6" />
+              </button>
+            </div>
           </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
