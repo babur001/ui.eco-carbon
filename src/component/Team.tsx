@@ -2,71 +2,71 @@ import i18next from "i18next";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const teamDesc =
-  i18next.t(`Ekocarbon Services MCHJ — o'z sohasida tajribaga ega va yuqori malakali mutaxassislar jamoasi. Har bir xodimimiz kompaniya faoliyatining muhim
-          yo'nalishiga mas'ul bo'lib, barqaror rivojlanishimizga hissa qo'shmoqda.`);
-
-const keyingilar = [
-  {
-    img: `/logo.png`,
-    role: i18next.t(`Bosh direktor`),
-    fullName: `ABDUJABBAROV AZIZ ABDUSATTAROVICH`,
-    desc: i18next.t(`Umumiy boshqaruv va strategik qarorlar`),
-    //
-  },
-  {
-    img: `/logo.png`,
-    role: i18next.t(`Bosh muhandis (boshqa sohalar bo'yicha)`),
-    fullName: `MAMATOV ISTAM UKTAMOVICH`,
-    desc: i18next.t(`Texnik tizimlar va loyiha muvofiqligi`),
-  },
-  {
-    img: `/logo.png`,
-    role: i18next.t(`Departament direktori`),
-    fullName: `ZAXIDOV MUZAFFAR YULDASHEVICH`,
-    desc: i18next.t(`Ichki bo'limlar va loyiha yuritish jarayonlarini boshqarish `),
-  },
-  {
-    img: `/logo.png`,
-    role: i18next.t(`Departament direktori o'rinbosari: Kadr va rejim bo'limi boshlig'i`),
-    fullName: `YO'LDASHEV DILSHODBEK SHUXRATBEK O'G'LI`,
-    desc: i18next.t(`Xodimlar boshqaruvi, ichki tartib va rejim `),
-  },
-  {
-    img: `/logo.png`,
-    role: i18next.t(`Moliya-iqtisod va ma'muriy bo'lim boshlig'i`),
-    fullName: `MIRSAIDOV MIRSAID MIRAZIZOVICH`,
-    desc: i18next.t(`Moliya tahlili, budjet va ofis boshqaruvi `),
-  },
-  {
-    img: `/logo.png`,
-    role: i18next.t(`Ta'minot bo'limi boshlig'i`),
-    fullName: `O'TKUROV OYBEK OTABEKOVICH`,
-    desc: i18next.t(`Materiallar va texnika yetkazib berilishini ta'minlash `),
-  },
-  {
-    img: `/logo.png`,
-    role: i18next.t(`Tayyor mahsulotlar ombori mudiri`),
-    fullName: `XOSHIMOV SALOXIDDIN YAXYOYEVICH`,
-    desc: i18next.t(`Tayyor mahsulotlar harakati va saqlash nazorati `),
-  },
-  {
-    img: `/logo.png`,
-    role: i18next.t(`Texnika xavfsizligi bo'yicha muhandis`),
-    fullName: `BIKKULOV ANVAR BORISOVICH`,
-    desc: i18next.t(`Ish jarayonidagi xavfsizlik choralarini kuzatish va nazorat qilish `),
-  },
-  {
-    img: `/logo.png`,
-    role: i18next.t(`Bosh administrator`),
-    fullName: `ISMATULLAYEV DAMIR RASHITOVICH`,
-    desc: i18next.t(`Худудий менежерлар ишини мувофиқлаштириш`),
-    //
-  },
-];
-
 export default function Team() {
   const { t } = useTranslation();
+
+  const teamDesc =
+    t(`Ekocarbon Services MCHJ — o'z sohasida tajribaga ega va yuqori malakali mutaxassislar jamoasi. Har bir xodimimiz kompaniya faoliyatining muhim
+          yo'nalishiga mas'ul bo'lib, barqaror rivojlanishimizga hissa qo'shmoqda.`);
+
+  const keyingilar = [
+    {
+      img: `/logo.png`,
+      role: t(`Bosh direktor`),
+      fullName: `ABDUJABBAROV AZIZ ABDUSATTAROVICH`,
+      desc: t(`Umumiy boshqaruv va strategik qarorlar`),
+      //
+    },
+    {
+      img: `/logo.png`,
+      role: t(`Bosh muhandis (boshqa sohalar bo'yicha)`),
+      fullName: `MAMATOV ISTAM UKTAMOVICH`,
+      desc: t(`Texnik tizimlar va loyiha muvofiqligi`),
+    },
+    {
+      img: `/logo.png`,
+      role: t(`Departament direktori`),
+      fullName: `ZAXIDOV MUZAFFAR YULDASHEVICH`,
+      desc: t(`Ichki bo'limlar va loyiha yuritish jarayonlarini boshqarish `),
+    },
+    {
+      img: `/logo.png`,
+      role: t(`Departament direktori o'rinbosari: Kadr va rejim bo'limi boshlig'i`),
+      fullName: `YO'LDASHEV DILSHODBEK SHUXRATBEK O'G'LI`,
+      desc: t(`Xodimlar boshqaruvi, ichki tartib va rejim `),
+    },
+    {
+      img: `/logo.png`,
+      role: t(`Moliya-iqtisod va ma'muriy bo'lim boshlig'i`),
+      fullName: `MIRSAIDOV MIRSAID MIRAZIZOVICH`,
+      desc: t(`Moliya tahlili, budjet va ofis boshqaruvi `),
+    },
+    {
+      img: `/logo.png`,
+      role: t(`Ta'minot bo'limi boshlig'i`),
+      fullName: `O'TKUROV OYBEK OTABEKOVICH`,
+      desc: t(`Materiallar va texnika yetkazib berilishini ta'minlash `),
+    },
+    {
+      img: `/logo.png`,
+      role: t(`Tayyor mahsulotlar ombori mudiri`),
+      fullName: `XOSHIMOV SALOXIDDIN YAXYOYEVICH`,
+      desc: t(`Tayyor mahsulotlar harakati va saqlash nazorati `),
+    },
+    {
+      img: `/logo.png`,
+      role: t(`Texnika xavfsizligi bo'yicha muhandis`),
+      fullName: `BIKKULOV ANVAR BORISOVICH`,
+      desc: t(`Ish jarayonidagi xavfsizlik choralarini kuzatish va nazorat qilish `),
+    },
+    {
+      img: `/logo.png`,
+      role: t(`Bosh administrator`),
+      fullName: `ISMATULLAYEV DAMIR RASHITOVICH`,
+      desc: t(`Худудий менежерлар ишини мувофиқлаштириш`),
+      //
+    },
+  ];
 
   return (
     <div id="team" className="px-4 py-10 sm:px-6 lg:px-8 lg:py-14">

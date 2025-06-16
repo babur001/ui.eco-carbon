@@ -1,13 +1,12 @@
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
-const stats = [
-  { name: i18next.t("Gazsizib chiqish holatlari aniqlandi"), value: "52 000" },
-  { name: i18next.t("Tonnagacha CO₂ ekvivalentiga teng emissiyaning oldini olish imkonini berdi."), value: "8 000 000" },
-];
-
 export default function WorkWithUs() {
   const { t } = useTranslation();
+  const stats = [
+    { name: t("Gazsizib chiqish holatlari aniqlandi"), value: "52 000" },
+    { name: t("Tonnagacha CO₂ ekvivalentiga teng emissiyaning oldini olish imkonini berdi."), value: "8 000 000" },
+  ];
   return (
     <div id="results" className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img src={`/people/13.jpg`} className="absolute inset-0 -z-10 size-full object-cover object-right md:object-center" />

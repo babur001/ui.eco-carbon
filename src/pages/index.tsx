@@ -9,6 +9,8 @@ import ContactSection from "@/component/ContactSection";
 import Footer from "@/component/Footer";
 import i18next from "i18next";
 import { useRouter } from "next/router";
+import Blog from "@/component/Blog";
+import UzbekistanMap from "@/component/Map";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +29,8 @@ export default function Home() {
       <WorkWithUs />
       <Services />
       <Team />
+      <UzbekistanMap />
+      <Blog />
       <ContactSection />
       <Footer />
     </div>

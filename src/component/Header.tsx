@@ -4,6 +4,7 @@ import { ChevronDown, Home, Info, List, Menu, NotebookPen, PhoneCall, ShieldUser
 import { useTranslation } from "react-i18next";
 import LanguagePicker from "./LanguagePicker";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,25 +15,25 @@ export default function Header() {
     {
       title: t("Asosiy"),
       children: [
-        { name: t("Asosiy"), href: "#main", icon: Home },
-        { name: t("Biz haqimizda"), href: "#aboutUs", icon: Info },
-        { name: t("Natijalarimiz"), href: "#results", icon: Wrench },
-        { name: t("Xizmatlar"), href: "#services", icon: List },
-        { name: t("Bizning jamoa"), href: "#team", icon: ShieldUser },
-        { name: t("Aloqa"), href: "#contact", icon: NotebookPen },
+        { name: t("Asosiy"), href: "/#main", icon: Home },
+        { name: t("Biz haqimizda"), href: "/#aboutUs", icon: Info },
+        { name: t("Natijalarimiz"), href: "/#results", icon: Wrench },
+        { name: t("Xizmatlar"), href: "/#services", icon: List },
+        { name: t("Bizning jamoa"), href: "/#team", icon: ShieldUser },
+        { name: t("Aloqa"), href: "/#contact", icon: NotebookPen },
       ],
     },
     { title: t("Blog"), href: "/blog", children: [] },
-    { title: t("Aloqa"), href: "#contact", children: [] },
+    { title: t("Aloqa"), href: "/#contact", children: [] },
   ];
 
   return (
     <header className="bg-white">
       <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <img alt={"Logo Alt"} src="/logo.png" className="h-14 w-auto" />
-          </a>
+          </Link>
         </div>
         <div className="flex gap-5 lg:hidden">
           <LanguagePicker activeLang={locale} />
@@ -61,10 +62,10 @@ export default function Header() {
                           <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-primary" />
                         </div>
                         <div className="flex-auto">
-                          <a href={item.href} className="block font-semibold text-gray-900">
+                          <Link href={item.href} className="block font-semibold text-gray-900">
                             {item.name}
                             <span className="absolute inset-0" />
-                          </a>
+                          </Link>
                         </div>
                       </PopoverButton>
                     ))}
@@ -72,9 +73,9 @@ export default function Header() {
                 </PopoverPanel>
               </Popover>
             ) : (
-              <a href={m.href} className="text-sm/6 font-semibold text-black hover:bg-gray-100 !pl-3 pr-2 py-1 rounded-md !gap-2">
+              <Link href={m.href || "#"} className="text-sm/6 font-semibold text-black hover:bg-gray-100 !pl-3 pr-2 py-1 rounded-md !gap-2">
                 {m.title}
-              </a>
+              </Link>
             )}
           </PopoverGroup>
         ))}
