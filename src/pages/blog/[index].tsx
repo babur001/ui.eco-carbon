@@ -1,12 +1,9 @@
-import Footer from "@/component/Footer";
-import Header from "@/component/Header";
 import React from "react";
+import Layout from "@/component/Layout";
 
 function BlogsPage() {
   return (
-    <div className="container mx-auto">
-      <Header />
-
+    <Layout>
       <div className="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
         <div className="max-w-2xl">
           <div className="space-y-5 md:space-y-8">
@@ -127,9 +124,7 @@ function BlogsPage() {
           </div>
         </div>
       </div>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 }
 

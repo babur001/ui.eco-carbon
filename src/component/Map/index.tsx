@@ -2,7 +2,6 @@ import type React from "react";
 import { useState } from "react";
 import { regions } from "./regions";
 import { useTranslation } from "react-i18next";
-import { get } from "lodash";
 
 interface Region {
   d: string;
@@ -115,12 +114,11 @@ export default function UzbekistanMap() {
 
   return (
     <div className="w-full">
-      <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">{t("📍 Respublikadagi filiallarimiz")}</h1>
+      <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">{t("📍 Interaktiv xarita:")}</h1>
 
       <div className="mt-6 text-center text-sm text-gray-500 space-y-1">
-        <p className="w-2/3 mx-auto">
-          {t(`Ekocarbon Services O‘zbekiston bo‘ylab keng tarmoqqa ega bo‘lib, barcha hududlarda ekologik xizmatlarni tez va sifatli ko‘rsatadi. Bizning hududiy
-          menejerlarimizga bevosita murojaat qilishingiz mumkin:`)}
+        <p className="w-full mx-auto">
+          {t(`EkoCarbon Services MCHJ O'zbekiston bo'ylab keng tarmoqqa ega bo'lib, barcha hududlarda ekologik xizmatlarni tez va sifatli ko'rsatadi`)}
         </p>
       </div>
 
@@ -171,25 +169,6 @@ export default function UzbekistanMap() {
             </div>
           </div>
         )}
-      </div>
-
-      {/* Legend */}
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold mb-4 text-gray-800">Hududiy menejerlarimiz:</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {regions.map((region) => (
-            <div key={region.name} className="flex items-center space-x-3 p-2 rounded-lg bg-gray-100 transition-colors">
-              <div className="w-4 h-4 rounded-full flex-shrink-0" style={{ backgroundColor: region.color }} />
-              <div className="min-w-0">
-                <p className="text-sm font-medium text-gray-700 truncate">{region.name}</p>
-                <p className="text-xs text-gray-500">{get(managersByRegion, `${region.name}.name`, "-")}</p>
-                <a href={`tel:${get(managersByRegion, `${region.name}.tel`, "-")}`} className="text-xs text-gray-500">
-                  {get(managersByRegion, `${region.name}.tel`, "-")}
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );
