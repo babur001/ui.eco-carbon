@@ -11,6 +11,8 @@ import Layout from "@/component/Layout";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import axios from "axios";
 import { get } from "lodash";
+import { db } from "@/server/app";
+import { blogs } from "@/server/db/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,27 +21,32 @@ const geistSans = Geist({
 
 interface IHomeProps {
   messages: Record<string, string | Record<string, string>>;
+  posts: (typeof blogs.$inferSelect)[];
 }
 
 export const getStaticProps: GetStaticProps<IHomeProps> = async (context) => {
   const lang = context.locale;
 
-  const { data } = await axios({
-    url: "http://localhost:7007/api/translations",
-    method: "GET",
-    data: {
-      lang,
-    },
-  });
+  const [posts, translations] = await Promise.all([
+    db.select().from(blogs).limit(3),
+    axios({
+      url: "http://localhost:7007/api/translations",
+      method: "GET",
+      data: {
+        lang,
+      },
+    }),
+  ]);
 
   return {
     props: {
-      messages: JSON.parse(get(data, "translations", {})),
+      posts,
+      messages: JSON.parse(get(translations, "data.translations", {})),
     },
   };
 };
 
-export default function Home({}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout className={geistSans.className}>
       <Hero />
@@ -48,7 +55,7 @@ export default function Home({}: InferGetStaticPropsType<typeof getStaticProps>)
       <Services />
       <Team />
       <UzbekistanMap />
-      <Blog />
+      <Blog posts={posts} />
       <ContactSection />
     </Layout>
   );

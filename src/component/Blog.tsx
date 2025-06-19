@@ -2,8 +2,10 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import BlogCard from "./BlogCard";
 import Link from "next/link";
+import { blogs } from "@/server/db/schema";
+import { ArrowRight, ChevronRight } from "lucide-react";
 
-function Blog() {
+function Blog({ posts }: { posts: (typeof blogs.$inferSelect)[] }) {
   const t = useTranslations();
 
   return (
@@ -14,24 +16,13 @@ function Blog() {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <BlogCard
-          title="EkoCarbon Services"
-          desc="O'zbekistonda gaz sizib chiqishini aniqlash vatuzatishga qaratilgan ilg'or dasturlarni amalga oshirmoqda."
-          href={`/blog/${1}`}
-          img={`/people/12.jpg`}
-        />
-        <BlogCard
-          title="EkoCarbon Services"
-          desc="O'zbekistonda gaz sizib chiqishini aniqlash vatuzatishga qaratilgan ilg'or dasturlarni amalga oshirmoqda."
-          href={`/blog/${1}`}
-          img={`/people/12.jpg`}
-        />
-        <BlogCard
-          title="EkoCarbon Services"
-          desc="O'zbekistonda gaz sizib chiqishini aniqlash vatuzatishga qaratilgan ilg'or dasturlarni amalga oshirmoqda."
-          href={`/blog/${1}`}
-          img={`/people/12.jpg`}
-        />
+        {posts.map((post) => {
+          return (
+            <Link href={`/blog/${post.uuid}`}>
+              <BlogCard title={post.title} desc={post.body} img={post.image_url} createdAt={post.created_at!} />
+            </Link>
+          );
+        })}
       </div>
 
       <div className="mt-12 text-center">
@@ -40,20 +31,7 @@ function Blog() {
           href={`/blog`}
         >
           {t("Barchasi")}
-          <svg
-            className="shrink-0 size-4"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="m9 18 6-6-6-6" />
-          </svg>
+          <ChevronRight strokeWidth={1.5} size={16} />
         </Link>
       </div>
     </div>
