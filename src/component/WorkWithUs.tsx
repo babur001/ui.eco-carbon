@@ -1,8 +1,8 @@
 import i18next from "i18next";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 export default function WorkWithUs() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const stats = [
     { name: t("Gazsizib chiqish holatlari aniqlandi"), value: "52 000" },
     { name: t("Tonnagacha CO₂ ekvivalentiga teng emissiyaning oldini olish imkonini berdi."), value: "8 000 000" },

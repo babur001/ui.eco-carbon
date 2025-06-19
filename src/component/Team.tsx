@@ -1,9 +1,9 @@
 import i18next from "i18next";
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 export default function Team() {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const teamDesc =
     t(`Ekocarbon Services MCHJ — o'z sohasida tajribaga ega va yuqori malakali mutaxassislar jamoasi. Har bir xodimimiz kompaniya faoliyatining muhim

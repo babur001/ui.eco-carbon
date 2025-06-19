@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel } from "@headlessui/react";
 import { ChevronDown, Home, Info, List, Menu, NotebookPen, PhoneCall, ShieldUser, Wrench, X } from "lucide-react";
-import { useTranslation } from "react-i18next";
 import LanguagePicker from "./LanguagePicker";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
+  const t = useTranslations();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { locale } = useRouter();
-  const { t } = useTranslation();
 
   const menu = [
     {

@@ -1,9 +1,9 @@
 import { ArrowDown, PhoneCall } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const videoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     if (videoRef.current) {

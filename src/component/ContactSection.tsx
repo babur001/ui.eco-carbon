@@ -1,9 +1,9 @@
 import { Building } from "lucide-react";
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 export default function ContactSection() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const companyInfo = {
     contact: {
       address: t("address"),

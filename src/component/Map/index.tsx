@@ -1,7 +1,7 @@
 import type React from "react";
 import { useState } from "react";
 import { regions } from "./regions";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 interface Region {
   d: string;
@@ -76,7 +76,7 @@ export default function UzbekistanMap() {
       tel: `📞 Tel: [+998 ** *** ** **]`,
     },
   };
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [tooltip, setTooltip] = useState(null as any);
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
 

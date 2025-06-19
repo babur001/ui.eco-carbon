@@ -1,13 +1,42 @@
 import BlogCard from "@/component/BlogCard";
 import Layout from "@/component/Layout";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
+import { blogs, blogs as blogsSchema } from "@/server/db/schema";
+import { db } from "@/server/app";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import axios from "axios";
+import { get } from "lodash";
+import Link from "next/link";
 
-export function getStaticProps() {
-  return { props: {} };
+interface IBlogsProps {
+  blogs: (typeof blogsSchema.$inferSelect)[];
+  messages: Record<string, string | Record<string, string>>;
 }
 
-export default function Blogs() {
-  const { t } = useTranslation();
+export const getStaticProps: GetStaticProps<IBlogsProps> = async (context) => {
+  const lang = context.locale;
+
+  const [posts, translations] = await Promise.all([
+    db.select().from(blogs),
+    axios({
+      url: "http://localhost:7007/api/translations",
+      method: "GET",
+      data: {
+        lang,
+      },
+    }),
+  ]);
+
+  return {
+    props: {
+      blogs: posts,
+      messages: JSON.parse(get(translations, "data.translations", {})),
+    },
+  };
+};
+
+export default function Blogs({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const t = useTranslations();
 
   return (
     <Layout>
@@ -18,12 +47,13 @@ export default function Blogs() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <BlogCard
-            title="EkoCarbon Services"
-            desc="O'zbekistonda gaz sizib chiqishini aniqlash vatuzatishga qaratilgan ilg'or dasturlarni amalga oshirmoqda."
-            href={`/blog/${1}`}
-            img={`/people/12.jpg`}
-          />
+          {blogs.map((blog) => {
+            return (
+              <Link href={`/blog/${blog.uuid}`}>
+                <BlogCard title={blog.title} desc={blog.body} img={blog.image_url} createdAt={blog.created_at!} />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </Layout>

@@ -1,20 +1,35 @@
-import Link from "next/link";
-import React from "react";
+import dayjs from "dayjs";
+import { truncate } from "lodash";
+import { Calendar } from "lucide-react";
 
-function BlogCard({ title, img, desc, href }: { title: string; img: string; desc: string; href: string }) {
+function BlogCard({ title, img, desc, createdAt }: { title: string; img: string; desc: string; createdAt: string }) {
   return (
-    <Link
-      className="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-hidden focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5"
-      href={href}
-    >
-      <div className="aspect-w-16 aspect-h-11">
-        <img className="w-full aspect-video object-cover rounded-xl" src={img} alt="Blog Image" />
+    <>
+      <div className="group overflow-hidden rounded-lg border border-gray-200 shadow-sm transition-all duration-300 hover:border-gray-300 hover:shadow">
+        <div className="relative h-40 w-full overflow-hidden bg-gray-100">
+          <img
+            alt="Autonomous Software Maintenance Has Arrived"
+            loading="lazy"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="100vw"
+            src={img}
+            style={{ position: "absolute", height: "100%", width: "100%", inset: 0, color: "transparent" }}
+          />
+        </div>
+        <div className="p-4">
+          <div className="mb-2 flex items-center">
+            <div className="inline-flex items-center gap-x-2 text-xs bg-gray-100 py-1 px-2 rounded-md">
+              <Calendar strokeWidth={1} size={16} />
+              <time dateTime="2020-03-16" className="text-gray-500">
+                {dayjs(createdAt).format("DD.MM.YYYY")}
+              </time>
+            </div>
+          </div>
+          <h3 className="mb-1 text-base font-medium text-gray-900 group-hover:text-gray-700">{title}</h3>
+          <p className="mb-3 line-clamp-2 text-xs text-gray-600" dangerouslySetInnerHTML={{ __html: truncate(desc, { length: 150 }) }} />
+        </div>
       </div>
-      <div className="my-6">
-        <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-        <p className="mt-5 text-gray-600">{desc}</p>
-      </div>
-    </Link>
+    </>
   );
 }
 

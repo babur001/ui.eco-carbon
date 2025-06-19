@@ -1,9 +1,10 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import BlogCard from "./BlogCard";
+import Link from "next/link";
 
 function Blog() {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -34,9 +35,9 @@ function Blog() {
       </div>
 
       <div className="mt-12 text-center">
-        <a
+        <Link
           className="py-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-gray-200 bg-white text-blue-600 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-          href="#"
+          href={`/blog`}
         >
           {t("Barchasi")}
           <svg
@@ -53,7 +54,7 @@ function Blog() {
           >
             <path d="m9 18 6-6-6-6" />
           </svg>
-        </a>
+        </Link>
       </div>
     </div>
   );

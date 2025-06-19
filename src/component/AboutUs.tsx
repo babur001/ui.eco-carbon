@@ -5,10 +5,10 @@ import i18next from "i18next";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 export default function AboutUs() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const aboutUsList = [
     {
       title:
