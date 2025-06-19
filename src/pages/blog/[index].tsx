@@ -33,6 +33,16 @@ function BlogsPage({ post }: { post: typeof blogs.$inferSelect }) {
         <div className="max-w-2xl">
           <div className="space-y-5 md:space-y-8">
             <div className="space-y-3">
+              <div className="relative w-full aspect-video overflow-hidden bg-gray-100 rounded-lg group">
+                <img
+                  alt="Autonomous Software Maintenance Has Arrived"
+                  loading="lazy"
+                  className="object-cover duration-500 group-hover:scale-105"
+                  src={post.image_url}
+                  style={{ position: "absolute", height: "100%", width: "100%", inset: 0, color: "transparent" }}
+                />
+              </div>
+
               <h2 className="text-2xl font-bold md:text-3xl">{post.title}</h2>
 
               <article dangerouslySetInnerHTML={{ __html: post.body }} />
