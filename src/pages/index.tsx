@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps<IHomeProps> = async (context) => {
   const [posts, translations] = await Promise.all([
     db.select().from(blogs).limit(3),
     axios({
-      url: "http://localhost:7007/api/translations",
+      url: `${process.env.API_URL}/api/translations`,
       method: "GET",
       data: {
         lang,

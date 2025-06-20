@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps<IBlogsProps> = async (context) => {
   const [posts, translations] = await Promise.all([
     db.select().from(blogs),
     axios({
-      url: "http://localhost:7007/api/translations",
+      url: `${process.env.API_URL}/api/translations`,
       method: "GET",
       data: {
         lang,
