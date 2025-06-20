@@ -18,19 +18,21 @@ export const getStaticProps: GetStaticProps<IBlogsProps> = async (context) => {
 
   const [posts, translations] = await Promise.all([
     db.select().from(blogs),
-    axios({
-      url: `${process.env.API_URL}/api/translations`,
-      method: "GET",
-      data: {
-        lang,
-      },
-    }),
+    "{}",
+    // ||
+    //   axios({
+    //     url: `${process.env.API_URL}/api/translations`,
+    //     method: "GET",
+    //     data: {
+    //       lang,
+    //     },
+    //   }),
   ]);
 
   return {
     props: {
       blogs: posts,
-      messages: JSON.parse(get(translations, "data.translations", {})),
+      messages: {}, // JSON.parse(get(translations, "data.translations", {})),
     },
   };
 };
