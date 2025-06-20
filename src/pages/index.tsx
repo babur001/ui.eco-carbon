@@ -13,6 +13,7 @@ import axios from "axios";
 import { get } from "lodash";
 import { db } from "@/server/app";
 import { blogs } from "@/server/db/schema";
+import Partners from "@/component/Partners";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,8 +55,10 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
       <WorkWithUs />
       <Services />
       <Team />
+      <Partners />
       <UzbekistanMap />
       <Blog posts={posts} />
+
       <ContactSection />
     </Layout>
   );
