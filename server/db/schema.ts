@@ -9,6 +9,21 @@ const uuidColumn = () =>
     .unique()
     .default(sql`gen_random_uuid()`);
 
+export const translations = pgTable("translations", {
+  uuid: uuidColumn(),
+  key: text().notNull().unique(),
+  value: text()
+    .notNull()
+    .default(sql`''::text`),
+  valueEn: text()
+    .notNull()
+    .default(sql`''::text`),
+  valueRu: text()
+    .notNull()
+    .default(sql`''::text`),
+  created_at: timestamp({ mode: "string" }).defaultNow(),
+});
+
 export const users = pgTable("users", {
   uuid: uuidColumn(),
   username: varchar({ length: 255 }).notNull().unique(),
