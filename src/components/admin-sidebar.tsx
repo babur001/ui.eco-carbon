@@ -13,37 +13,35 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import type { PageType } from "@/app/page";
-
-interface AdminSidebarProps {
-  currentPage: PageType;
-  onPageChange: (page: PageType) => void;
-}
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const navigationItems = [
   {
     title: "Translations",
     icon: Languages,
-    page: "translations" as PageType,
+    href: "/admin/translations",
   },
   {
     title: "Articles",
     icon: FileText,
-    page: "articles" as PageType,
+    href: "/admin/articles",
   },
   {
     title: "Settings",
     icon: Settings,
-    page: "settings" as PageType,
+    href: "/admin/settings",
   },
   {
     title: "Team",
     icon: Users,
-    page: "team" as PageType,
+    href: "/admin/team",
   },
 ];
 
-export function AdminSidebar({ currentPage, onPageChange }: AdminSidebarProps) {
+export function AdminSidebar() {
+  const router = useRouter();
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -57,21 +55,24 @@ export function AdminSidebar({ currentPage, onPageChange }: AdminSidebarProps) {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel>Admin</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navigationItems.map((item) => (
-                <SidebarMenuItem key={item.page}>
-                  <SidebarMenuButton size="lg" isActive={currentPage === item.page} onClick={() => onPageChange(item.page)}>
-                    <item.icon className="size-4" />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
+                <SidebarMenuItem key={item.href}>
+                  <Link href={item.href} className="w-full">
+                    <SidebarMenuButton size="lg" isActive={router.asPath === item.href}>
+                      <item.icon className="size-4" />
+                      <span>{item.title}</span>
+                    </SidebarMenuButton>
+                  </Link>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarRail />
     </Sidebar>
   );

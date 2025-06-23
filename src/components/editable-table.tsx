@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { translations } from "@/server/db/schema";
+import { Textarea } from "./ui/textarea";
 
 interface Column {
   key: string;
@@ -68,18 +69,22 @@ export function EditableTable({ data, columns, onCellUpdate }: EditableTableProp
                 <TableCell
                   key={column.key}
                   className={`${column.editable ? "cursor-pointer hover:bg-muted/50" : ""}  relative`}
-                  onClick={() => handleCellDoubleClick(row.uuid, column.key, row[column.key as keyof typeof row])}
+                  onClick={() => handleCellDoubleClick(row.uuid, column.key, row[column.key as keyof typeof row] || "")}
                 >
-                  <div className="w- overflow-hidden">
+                  <div className="w-full overflow-hidden whitespace-normal">
                     {editingCell?.id === row.uuid && editingCell?.field === column.key ? (
-                      <Input value={editValue} onChange={(e) => setEditValue(e.target.value)} onBlur={handleCancel} onKeyDown={handleKeyDown} autoFocus />
-                    ) : (
-                      <Input
-                        value={row[column.key as keyof typeof row] as string}
-                        readOnly
+                      <Textarea
+                        className="w-full"
+                        value={editValue}
+                        onChange={(e) => setEditValue(e.target.value)}
+                        onBlur={handleCancel}
+                        onKeyDown={handleKeyDown}
                         autoFocus
-                        className={`${!column.editable ? "pointer-events-none" : ""}`}
                       />
+                    ) : column.editable ? (
+                      <Textarea value={((row[column.key as keyof typeof row] || "") as string).trim()} readOnly autoFocus />
+                    ) : (
+                      <span>{((row[column.key as keyof typeof row] || "") as string).trim()}</span>
                     )}
                   </div>
                 </TableCell>
