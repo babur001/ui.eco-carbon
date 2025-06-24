@@ -5,6 +5,7 @@ import LanguagePicker from "./LanguagePicker";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { company } from "@/utils/contact-details";
 
 export default function Header() {
   const t = useTranslations();
@@ -85,7 +86,7 @@ export default function Header() {
 
           <a
             className="h-12 px-4 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-medium border border-transparent bg-primary text-white hover:bg-blue-700"
-            href="#"
+            href={`tel:${company.tel}`}
           >
             <PhoneCall strokeWidth={2} size={16} />
             {t("Qo'ng'iroq qilish")}

@@ -65,7 +65,7 @@ export default function ArticleCreatePage() {
 
       if (data.success) {
         toast.success("Maqola muvaffaqiyatli saqlandi!");
-        router.push("/admin/articles");
+        router.push("/admin-password-7788991233/articles");
       }
     }
 

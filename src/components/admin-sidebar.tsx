@@ -18,25 +18,25 @@ import { useRouter } from "next/router";
 
 const navigationItems = [
   {
-    title: "Translations",
+    title: "Tarjimalar",
     icon: Languages,
-    href: "/admin/translations",
+    href: "/admin-password-7788991233/translations",
   },
   {
-    title: "Articles",
+    title: "Maqolalar",
     icon: FileText,
-    href: "/admin/articles",
+    href: "/admin-password-7788991233/articles",
   },
   {
     title: "Settings",
     icon: Settings,
-    href: "/admin/settings",
+    href: "/admin-password-7788991233/settings",
   },
-  {
-    title: "Team",
-    icon: Users,
-    href: "/admin/team",
-  },
+  // {
+  //   title: "Team",
+  //   icon: Users,
+  //   href: "/admin-password-7788991233/team",
+  // },
 ];
 
 export function AdminSidebar() {

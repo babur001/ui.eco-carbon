@@ -5,11 +5,11 @@ import { translations, translations as translationsSchema } from "@/server/db/sc
 import axios from "axios";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import { db } from "@/server/app";
 import AdminLayout from "@/components/pages/admin-layout";
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const res_translations = await db.select().from(translations);
 
   return {

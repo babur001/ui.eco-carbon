@@ -1,16 +1,12 @@
 import { Building } from "lucide-react";
 import React from "react";
 import { useTranslations } from "next-intl";
+import { settings as settingsSchema } from "@/server/db/schema";
 
-export default function ContactSection() {
+export default function ContactSection({ settings }: { settings: typeof settingsSchema.$inferSelect }) {
   const t = useTranslations();
-  const companyInfo = {
-    contact: {
-      address: t("address"),
-      phone: "+998954397101",
-      email: "santexnika@yandex.com",
-    },
-  };
+
+  console.log(settings);
 
   return (
     <section id="contact" className="md:py-24 !py-5">
@@ -28,7 +24,7 @@ export default function ContactSection() {
                 <Building className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-medium">{t("Korxona")}</p>
-                  <p className="!my-0 font-medium">"EkoCarbon Services", "Climate Compass"</p>
+                  <p className="!my-0 font-medium">{settings.companyName}</p>
                 </div>
               </div>
 
@@ -55,7 +51,7 @@ export default function ContactSection() {
                     target="_blank"
                     className="text-muted-foreground"
                   >
-                    {companyInfo.contact.address}
+                    {t("address")}
                   </a>
                 </div>
               </div>
@@ -77,8 +73,8 @@ export default function ContactSection() {
                 </svg>
                 <div>
                   <p className="font-medium">{t("Telefon")}</p>
-                  <a href="tel:+998954397101" className="text-muted-foreground">
-                    {companyInfo.contact.phone}
+                  <a href={`tel:${settings.tel}`} className="text-muted-foreground">
+                    {settings.tel}
                   </a>
                 </div>
               </div>
@@ -101,8 +97,8 @@ export default function ContactSection() {
                 </svg>
                 <div>
                   <p className="font-medium">{t("Email")}</p>
-                  <a href="mailto:foodsfruits@yandex.com" className="text-muted-foreground">
-                    {companyInfo.contact.email}
+                  <a href={`mailto:${settings.email}`} className="text-muted-foreground">
+                    {settings.email}
                   </a>
                 </div>
               </div>
@@ -111,7 +107,8 @@ export default function ContactSection() {
             <div>
               <div className="bg-white w-full h-auto flex items-center justify-center gap-2 flex-wrap">
                 <a
-                  href="#"
+                  href={settings.facebook || ""}
+                  target="_blank"
                   className="p-2 rounded-lg flex items-center border border-gray-300 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 71 72" fill="none">
@@ -121,8 +118,10 @@ export default function ContactSection() {
                     />
                   </svg>
                 </a>
+
                 <a
-                  href="#"
+                  href={settings.instagram || ""}
+                  target="_blank"
                   className="p-2 rounded-lg flex items-center border border-gray-300 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 71 72" fill="none">
@@ -132,9 +131,9 @@ export default function ContactSection() {
                     />
                   </svg>
                 </a>
-
                 <a
-                  href="#"
+                  href={settings.linkedin || ""}
+                  target="_blank"
                   className="p-2 rounded-lg flex items-center border border-gray-300 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72" fill="none">
@@ -144,9 +143,9 @@ export default function ContactSection() {
                     />
                   </svg>
                 </a>
-
                 <a
-                  href="#"
+                  href={settings.telegram || ""}
+                  target="_blank"
                   className="p-2 rounded-lg flex items-center border border-gray-300 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72" fill="none">
@@ -156,9 +155,9 @@ export default function ContactSection() {
                     />
                   </svg>
                 </a>
-
                 <a
-                  href="#"
+                  href={settings.youtube || ""}
+                  target="_blank"
                   className="p-2 rounded-lg flex items-center border border-gray-300 justify-center transition-all duration-500 hover:border-gray-100 hover:bg-gray-100"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 71 71" fill="none">

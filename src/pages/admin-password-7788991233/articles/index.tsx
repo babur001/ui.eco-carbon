@@ -60,14 +60,14 @@ export default function ArticlesPage({ articles }: { articles: Article[] }) {
   };
 
   const columns = [
-    { key: "title", label: "Title", editable: false },
-    { key: "titleRu", label: "Title (RU)", editable: false },
-    { key: "titleEn", label: "Title (EN)", editable: false },
-    { key: "image_url", label: "Image URL", editable: false },
-    { key: "body", label: "Content", editable: false },
-    { key: "bodyRu", label: "Content (RU)", editable: false },
-    { key: "bodyEn", label: "Content (EN)", editable: false },
-    { key: "created_at", label: "Created At" },
+    { key: "title", label: "Sarlavha", editable: false },
+    { key: "titleRu", label: "Sarlavha (RU)", editable: false },
+    { key: "titleEn", label: "Sarlavha (EN)", editable: false },
+    { key: "image_url", label: "Rasm URL", editable: false },
+    { key: "body", label: "Maqola matni", editable: false },
+    { key: "bodyRu", label: "Maqola matni (RU)", editable: false },
+    { key: "bodyEn", label: "Maqola matni (EN)", editable: false },
+    { key: "created_at", label: "Yaratilgan sana" },
   ];
 
   return (
@@ -78,10 +78,10 @@ export default function ArticlesPage({ articles }: { articles: Article[] }) {
             <h1 className="text-2xl font-bold tracking-tight">Maqolalar</h1>
             <p className="text-muted-foreground">Maqolalar ro'yxatini boshqarish</p>
           </div>
-          <Link href="/admin/articles/create" className="inline-flex items-center">
+          <Link href="/admin-password-7788991233/articles/create" className="inline-flex items-center">
             <Button>
               <Plus className="mr-2 h-4 w-4" />
-              Create Article
+              Maqola yaratish
             </Button>
           </Link>
         </div>

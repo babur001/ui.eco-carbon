@@ -24,6 +24,18 @@ export const translations = pgTable("translations", {
   created_at: timestamp({ mode: "string" }).defaultNow(),
 });
 
+export const settings = pgTable("settings", {
+  companyName: text(),
+  email: text(),
+  tel: text(),
+
+  facebook: text(),
+  instagram: text(),
+  linkedin: text(),
+  telegram: text(),
+  youtube: text(),
+});
+
 export const users = pgTable("users", {
   uuid: uuidColumn(),
   username: varchar({ length: 255 }).notNull().unique(),
