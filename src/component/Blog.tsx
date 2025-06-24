@@ -1,12 +1,15 @@
-import React from "react";
 import { useTranslations } from "next-intl";
 import BlogCard from "./BlogCard";
 import Link from "next/link";
 import { blogs } from "@/server/db/schema";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import { useIsClient } from "./useIsClient";
 
 function Blog({ posts }: { posts: (typeof blogs.$inferSelect)[] }) {
+  const { isClient } = useIsClient();
   const t = useTranslations();
+
+  if (!isClient) return null;
 
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">

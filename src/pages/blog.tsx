@@ -7,6 +7,10 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import axios from "axios";
 import { get } from "lodash";
 import Link from "next/link";
+import { minutesToSeconds } from "@/utils/minutes-to-seconds";
+import { useIsClient } from "@/component/useIsClient";
+import { useRouter } from "next/router";
+import { capitalizeFirstLetter } from "@/utils/capitalize-first-letter";
 
 interface IBlogsProps {
   blogs: (typeof blogsSchema.$inferSelect)[];
@@ -32,11 +36,18 @@ export const getStaticProps: GetStaticProps<IBlogsProps> = async (context) => {
       blogs: posts,
       messages: JSON.parse(get(translations, "data.translations", {})),
     },
+    revalidate: minutesToSeconds(5),
   };
 };
 
 export default function Blogs({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) {
   const t = useTranslations();
+  const { isClient } = useIsClient();
+
+  const router = useRouter();
+  const lang = capitalizeFirstLetter(router.locale || "en");
+
+  if (!isClient) return null;
 
   return (
     <Layout>
@@ -50,7 +61,7 @@ export default function Blogs({ blogs }: InferGetStaticPropsType<typeof getStati
           {blogs.map((blog) => {
             return (
               <Link href={`/blog/${blog.uuid}`}>
-                <BlogCard title={blog.title} desc={blog.body} img={blog.image_url} createdAt={blog.created_at!} />
+                <BlogCard title={get(blog, `title${lang}`, "-")} desc={get(blog, `body${lang}`, "-")} img={blog.image_url} createdAt={blog.created_at!} />
               </Link>
             );
           })}

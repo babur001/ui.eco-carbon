@@ -5,6 +5,9 @@ import { blogs } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { get } from "lodash";
+import { minutesToSeconds } from "@/utils/minutes-to-seconds";
+import { useRouter } from "next/router";
+import { capitalizeFirstLetter } from "@/utils/capitalize-first-letter";
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
   return {
@@ -23,10 +26,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       post,
     },
+    revalidate: minutesToSeconds(5),
   };
 };
 
 function BlogsPage({ post }: { post: typeof blogs.$inferSelect }) {
+  const router = useRouter();
+  const lang = capitalizeFirstLetter(router.locale || "en");
+
   return (
     <Layout>
       <div className="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
@@ -43,9 +50,9 @@ function BlogsPage({ post }: { post: typeof blogs.$inferSelect }) {
                 />
               </div>
 
-              <h2 className="text-2xl font-bold md:text-3xl">{post.title}</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">{get(post, `title${lang}`)}</h2>
 
-              <article dangerouslySetInnerHTML={{ __html: post.body }} />
+              <article dangerouslySetInnerHTML={{ __html: get(post, `body${lang}`, "-") }} />
             </div>
           </div>
         </div>
