@@ -46,11 +46,13 @@ export function AdminSidebar() {
     <Sidebar>
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <div className="data-[state=open]:bg-sidebar-accent | flex items-center gap-2">
-              <img src={"/logo.png"} alt="Logo" className="h-12" />
-            </div>
-          </SidebarMenuItem>
+          <Link href={"/"}>
+            <SidebarMenuItem>
+              <div className="data-[state=open]:bg-sidebar-accent | flex items-center gap-2">
+                <img src={"/logo.png"} alt="Logo" className="h-12" />
+              </div>
+            </SidebarMenuItem>
+          </Link>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>

@@ -4,15 +4,25 @@ const partners = [
   {
     isGlobal: true,
     title: "Climate Compass LLC (AQSH)",
+    imgUrl: "/partners/climate-compass.jpg",
   },
-  { isGlobal: true, title: "Gas Green Asia MCHJ" },
-  { isGlobal: true, title: "Eco Carbon Projects LTD UK" },
+  {
+    isGlobal: true,
+    title: "Gas Green Asia MCHJ",
+    //
+  },
+  {
+    isGlobal: true,
+    title: "Eco Carbon Projects LTD UK",
+    //
+  },
   { isGlobal: true, title: "BeZero Carbon LTD", imgUrl: "/partners/beZero.jpeg" },
   { isGlobal: true, title: "EcoEye LTD", imgUrl: "/partners/ecoEye.jpeg" },
   { isGlobal: true, title: "VERRA", imgUrl: "/partners/verra.jpeg" },
   {
     isGlobal: false,
     title: "Hududgaztaminot AJ",
+    imgUrl: "/partners/hududgaz.jpg",
   },
 ];
 
