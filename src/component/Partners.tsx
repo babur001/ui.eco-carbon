@@ -17,7 +17,7 @@ const partners = [
     //
   },
   { isGlobal: true, title: "BeZero Carbon LTD", imgUrl: "/partners/beZero.jpeg" },
-  { isGlobal: true, title: "EcoEye LTD", imgUrl: "/partners/ecoEye.jpeg" },
+  { isGlobal: true, title: "EcoEye LTD", imgUrl: "/partners/ecoeye.jpeg" },
   { isGlobal: true, title: "VERRA", imgUrl: "/partners/verra.jpeg" },
   {
     isGlobal: false,
