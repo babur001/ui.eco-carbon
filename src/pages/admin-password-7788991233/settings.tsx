@@ -13,16 +13,16 @@ import { db } from "@/server/app";
 import { settings as settingsSchema } from "@/server/db/schema";
 import axios from "axios";
 import { toast } from "sonner";
+import { minutesToSeconds } from "@/utils/minutes-to-seconds";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const [settingsShema] = await db.select().from(settingsSchema);
-
-  console.log(settingsShema);
 
   return {
     props: {
       settings: settingsShema,
     },
+    revalidate: minutesToSeconds(5),
   };
 };
 

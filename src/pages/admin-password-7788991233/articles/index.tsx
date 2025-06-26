@@ -11,6 +11,7 @@ import { truncate } from "lodash";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import axios from "axios";
 import { toast } from "sonner";
+import { minutesToSeconds } from "@/utils/minutes-to-seconds";
 
 type Article = typeof blogs.$inferSelect;
 

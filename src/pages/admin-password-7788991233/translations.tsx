@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { db } from "@/server/app";
 import AdminLayout from "@/components/pages/admin-layout";
+import { minutesToSeconds } from "@/utils/minutes-to-seconds";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res_translations = await db.select().from(translations);
@@ -21,6 +22,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 export default function TranslationsPage({ translations: translationsProp }: { translations: (typeof translationsSchema.$inferSelect)[] }) {
   const [translations, setTranslations] = useState(translationsProp);
+  const [submittingId, setSubmittingId] = useState({}); // uuid of the article
 
   const columns = [
     { key: "key", label: "Key", editable: false },
@@ -30,6 +32,9 @@ export default function TranslationsPage({ translations: translationsProp }: { t
   ];
 
   const handleCellUpdate = (id: string, field: string, value: string) => {
+    setSubmittingId({ uuid: id, field });
+    setTranslations((prev) => prev.map((item) => (item.uuid === id ? { ...item, [field]: value } : item)));
+
     axios
       .post("/api/translation-update", {
         uuid: id,
@@ -39,13 +44,13 @@ export default function TranslationsPage({ translations: translationsProp }: { t
       .then((response) => {
         console.log("Translation updated successfully:", response.data);
         toast.success("Tarjima muvaffaqiyatli yangilandi!");
-        // Optionally, you can update the local state here if needed
-        setTranslations((prev) => prev.map((item) => (item.uuid === id ? { ...item, [field]: value } : item)));
       })
       .catch((error) => {
         console.error("Error updating translation:", error);
         toast.error("Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
-      });
+      })
+
+      .finally(() => setSubmittingId(""));
   };
 
   return (
@@ -66,7 +71,7 @@ export default function TranslationsPage({ translations: translationsProp }: { t
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <EditableTable data={translations} columns={columns} onCellUpdate={handleCellUpdate} />
+            <EditableTable data={translations} columns={columns} onCellUpdate={handleCellUpdate} submittingId={submittingId} />
           </CardContent>
         </Card>
       </div>

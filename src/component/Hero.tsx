@@ -21,11 +21,7 @@ export default function Hero() {
           <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight">
             {t("Atrof-muhit uchun")} – <span className="text-primary block">{t("innovatsion yechimlar bilan")}!</span>
           </h1>
-          <p className="mt-3 text-base text-gray-800">
-            {t(`"Ekocarbon Services" MCHJ O‘zbekiston gaz infratuzilmasida ekologik xavfsizlikni ta’minlash va iqlim o‘zgarishiga qarshi kurashish bo‘yicha yetakchi
-            kompaniyalardan biridir. Biz xalqaro hamkorlik va ilg‘or texnologiyalar yordamida gaz sizib chiqishini aniqlash, tuzatish va emissiyalarni
-            kamaytirish bo‘yicha samarali echimlar taklif qilamiz.`)}
-          </p>
+          <p className="mt-3 text-base text-gray-800">{t(`main_sub_title`)}</p>
 
           <div className="mt-7 grid gap-3 w-full sm:inline-flex">
             <a

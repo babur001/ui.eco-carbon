@@ -4,9 +4,9 @@ import type React from "react";
 
 import { useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
 import { translations } from "@/server/db/schema";
 import { Textarea } from "./ui/textarea";
+import { Loader } from "lucide-react";
 
 interface Column {
   key: string;
@@ -17,10 +17,11 @@ interface Column {
 interface EditableTableProps {
   data: (typeof translations.$inferSelect)[];
   columns: Column[];
+  submittingId: any;
   onCellUpdate: (id: string, field: string, value: string) => void;
 }
 
-export function EditableTable({ data, columns, onCellUpdate }: EditableTableProps) {
+export function EditableTable({ data, columns, onCellUpdate, submittingId }: EditableTableProps) {
   const [editingCell, setEditingCell] = useState<{ id: string; field: string } | null>(null);
   const [editValue, setEditValue] = useState("");
 
@@ -72,20 +73,27 @@ export function EditableTable({ data, columns, onCellUpdate }: EditableTableProp
                   onClick={() => handleCellDoubleClick(row.uuid, column.key, row[column.key as keyof typeof row] || "")}
                 >
                   <div className="w-full overflow-hidden whitespace-normal">
-                    {editingCell?.id === row.uuid && editingCell?.field === column.key ? (
-                      <Textarea
-                        className="w-full"
-                        value={editValue}
-                        onChange={(e) => setEditValue(e.target.value)}
-                        onBlur={handleCancel}
-                        onKeyDown={handleKeyDown}
-                        autoFocus
-                      />
-                    ) : column.editable ? (
-                      <Textarea value={((row[column.key as keyof typeof row] || "") as string).trim()} readOnly autoFocus />
-                    ) : (
-                      <span>{((row[column.key as keyof typeof row] || "") as string).trim()}</span>
-                    )}
+                    <div className="relative">
+                      {submittingId.uuid === row.uuid && submittingId.field === column.key ? (
+                        <div className="absolute bg-gray-200/80 inset-0 flex items-center justify-center">
+                          <Loader className="animate-spin" />
+                        </div>
+                      ) : null}
+                      {editingCell?.id === row.uuid && editingCell?.field === column.key ? (
+                        <Textarea
+                          className="w-full"
+                          value={editValue}
+                          onChange={(e) => setEditValue(e.target.value)}
+                          onBlur={handleCancel}
+                          onKeyDown={handleKeyDown}
+                          autoFocus
+                        />
+                      ) : column.editable ? (
+                        <Textarea value={((row[column.key as keyof typeof row] || "") as string).trim()} readOnly autoFocus />
+                      ) : (
+                        <span>{((row[column.key as keyof typeof row] || "") as string).trim()}</span>
+                      )}
+                    </div>
                   </div>
                 </TableCell>
               ))}
