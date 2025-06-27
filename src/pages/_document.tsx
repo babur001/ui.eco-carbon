@@ -7,6 +7,7 @@ export default function Document() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.ecocarbonservices.uz/" />
         <meta property="og:title" content='"Eсo Сarbon Services" MCHJ | ecocarbonservice' />
+        <meta name="robots" content="all" />
         <meta
           property="og:description"
           content='"Eсo Сarbon Services" MCHJ O‘zbekiston gaz infratuzilmasida ekologik xavfsizlikni ta’minlash va iqlim o‘zgarishiga qarshi kurashish bo‘yicha yetakchi kompaniyalardan biridir. Biz xalqaro hamkorlik va ilg‘or texnologiyalar yordamida gaz sizib chiqishini aniqlash, tuzatish va emissiyalarni kamaytirish bo‘yicha samarali echimlar taklif qilamiz.'

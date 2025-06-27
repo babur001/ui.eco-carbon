@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /server/
+
+Sitemap: Sitemap: https://www.ecocarbonservices.uz/sitemap.xml
