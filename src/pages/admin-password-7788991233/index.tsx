@@ -1,28 +1,17 @@
-"use client";
-
-import { useState } from "react";
-import { AdminSidebar } from "@/components/admin-sidebar";
-import { SettingsPage } from "@/components/pages/settings-page";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-
-export type PageType = "translations" | "articles" | "article-create" | "settings" | "team";
+import { Loader } from "lucide-react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function AdminApp() {
-  const [currentPage, setCurrentPage] = useState<PageType>("translations");
+  const router = useRouter();
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case "settings":
-        return <SettingsPage />;
-      default:
-    }
-  };
+  useEffect(() => {
+    router.push("/admin-password-7788991233/translations");
+  }, []);
 
   return (
-    <SidebarProvider>
-      <AdminSidebar />
-
-      <SidebarInset>{/* <div className="flex flex-1 flex-col">{renderPage()}</div> */}</SidebarInset>
-    </SidebarProvider>
+    <div className="flex items-center justify-center h-screen w-full">
+      <Loader className="animate-spin" size={40} />
+    </div>
   );
 }

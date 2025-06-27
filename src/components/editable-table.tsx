@@ -84,12 +84,22 @@ export function EditableTable({ data, columns, onCellUpdate, submittingId }: Edi
                           className="w-full"
                           value={editValue}
                           onChange={(e) => setEditValue(e.target.value)}
-                          onBlur={handleCancel}
+                          onBlur={() => {
+                            if (editValue !== row[column.key as keyof typeof row]) {
+                              handleSave();
+                            }
+                          }}
                           onKeyDown={handleKeyDown}
                           autoFocus
                         />
                       ) : column.editable ? (
-                        <Textarea value={((row[column.key as keyof typeof row] || "") as string).trim()} readOnly autoFocus />
+                        <Textarea
+                          className="w-full"
+                          value={((row[column.key as keyof typeof row] || "") as string).trim()}
+                          onFocus={() => handleCellDoubleClick(row.uuid, column.key, row[column.key as keyof typeof row] || "")}
+                          autoFocus
+                          //
+                        />
                       ) : (
                         <span>{((row[column.key as keyof typeof row] || "") as string).trim()}</span>
                       )}

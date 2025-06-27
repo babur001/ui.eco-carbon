@@ -11,6 +11,7 @@ import { minutesToSeconds } from "@/utils/minutes-to-seconds";
 import { useIsClient } from "@/component/useIsClient";
 import { useRouter } from "next/router";
 import { capitalizeFirstLetter } from "@/utils/capitalize-first-letter";
+import { getLocaleNameOf } from "@/utils/getLocaleNameOf";
 
 interface IBlogsProps {
   blogs: (typeof blogsSchema.$inferSelect)[];
@@ -61,7 +62,12 @@ export default function Blogs({ blogs }: InferGetStaticPropsType<typeof getStati
           {blogs.map((blog) => {
             return (
               <Link href={`/blog/${blog.uuid}`}>
-                <BlogCard title={get(blog, `title${lang}`, "-")} desc={get(blog, `body${lang}`, "-")} img={blog.image_url} createdAt={blog.created_at!} />
+                <BlogCard
+                  title={get(blog, getLocaleNameOf("title", lang))}
+                  desc={get(blog, getLocaleNameOf("body", lang))}
+                  img={blog.image_url}
+                  createdAt={blog.created_at!}
+                />
               </Link>
             );
           })}

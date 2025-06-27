@@ -1,13 +1,15 @@
 import React from "react";
 import Layout from "@/component/Layout";
 import { db } from "@/server/app";
-import { blogs } from "@/server/db/schema";
+import { blogs, translations } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { get } from "lodash";
 import { minutesToSeconds } from "@/utils/minutes-to-seconds";
 import { useRouter } from "next/router";
 import { capitalizeFirstLetter } from "@/utils/capitalize-first-letter";
+import { getLocaleNameOf } from "@/utils/getLocaleNameOf";
+import axios from "axios";
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
   return {
@@ -17,14 +19,24 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const lang = context.locale;
   const uuid = get(context, "params.index", "") as string;
   const locale = get(context, "locale", "en");
+
+  const translations = await axios({
+    url: `${process.env.API_URL}/api/translations`,
+    method: "GET",
+    data: {
+      lang,
+    },
+  });
 
   const [post] = await db.select().from(blogs).where(eq(blogs.uuid, uuid)).limit(1);
 
   return {
     props: {
       post,
+      messages: JSON.parse(get(translations, "data.translations", {})),
     },
     revalidate: minutesToSeconds(5),
   };
@@ -50,9 +62,9 @@ function BlogsPage({ post }: { post: typeof blogs.$inferSelect }) {
                 />
               </div>
 
-              <h2 className="text-2xl font-bold md:text-3xl">{get(post, `title${lang}`)}</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">{get(post, getLocaleNameOf("title", lang))}</h2>
 
-              <article dangerouslySetInnerHTML={{ __html: get(post, `body${lang}`, "-") }} />
+              <article dangerouslySetInnerHTML={{ __html: get(post, getLocaleNameOf("body", lang)) }} />
             </div>
           </div>
         </div>

@@ -11,19 +11,13 @@ export default function AboutUs() {
   const t = useTranslations();
   const aboutUsList = [
     {
-      title:
-        t(`Kompaniya 2021 yil tashkil topgan bolib 2023 yildan Hududgaztaminot bilan ekologik proekt ustida ishlamoqda. 2023 mart oyida Amerikaning Climate Compas LLS va Gas Green Asia MCHJ bilan investitsion shartnomlar tuzilib. Toshkent shahri va viloyatida exprement tariqasida ish boshlash uchun kelishuvga erishildi. 2023 yil iyun oyidan Toshkent shahri va viloyatida, sentyabr oyidan boshqa viloyatlarda ish tashkil etildi. Ish jaroyani shundan iboratki xodimlar (GTP) gaz taqsimlash punktlari va (RD) regulyator davlenilardan sizib chiqyotgan korbanad angidrid gazlarini maxsus AQSH dan keltirilgan uskunalar yordamida tekshirilib tamirilash ishlari bajariladi. "EkoCarbon Services" va "Climate Compass" boshchiligidagi ilg'or gaz sizib chiqishlarni aniqlash va ta'mirlash dasturi O'zbekistonning gaz taqsimlash tizimidagi 52 000 dan ortiq alohida gaz sizib chiqish xolatlarni topdi va ta'mirladi,
-bu esa yiliga deyarli 8-million CO₂ emissiyasini oldini oladi.`),
+      title: t(`about-us-1`),
     },
     {
-      title:
-        t(`"Ekocarbon Services" MCHJ – 2021 yilda tashkil topgan bo‘lib, 2023 yildan boshlab “Hududgaztaminot” bilan hamkorlikda O‘zbekiston gaz taqsimlash tizimida ekologik loyiha ustida ishlamoqda.
-2023 yil mart oyida kompaniya AQSHning "Climate Compass" LLC va "Gas Green Asia" MCHJ bilan investitsion shartnomalar tuzib, Toshkent shahri va viloyatida eksperimental loyihalarni boshladi. 2023 yil iyunidan boshlab Toshkent shahri va viloyatida ,sentyabrdan  loyiha boshqa viloyatlarda ham joriy etildi.`),
+      title: t(`about-us-2`),
     },
     {
-      title: t(
-        `Kompaniyamiz “Climate Compass” boshchiligida O‘zbekistonda gaz sizib chiqishini aniqlash va tuzatishga qaratilgan ilg‘or dasturlarni amalga oshirmoqda. Shu vaqtgacha 52 000 dan ortiq gaz sizib chiqish holatlari aniqlanib, muvaffaqiyatli ta’mirlandi — bu yiliga 8 million tonnagacha CO₂ ekvivalentiga teng emissiyaning oldini olish imkonini berdi.`
-      ),
+      title: t(`about-us-3`),
     },
   ];
 

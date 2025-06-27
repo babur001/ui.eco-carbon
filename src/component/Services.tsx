@@ -24,7 +24,7 @@ export default function Services() {
         {
           title: t("🌍 Loyihalar va yutuqlar"),
           children: [
-            { title: t("52.000+ ta gaz sizib chiqish holati aniqlanib, ta'mirlandi") },
+            { title: t("achievments-1") },
             { title: t("8-million tonna CO₂ ekvivalentidan ortiq emissiyaning oldi olindi") },
             { title: t("BeZero Carbon reytingida “AA” baho") },
             { title: t("VERRA tomonidan tasdiqlangan karbon bloklari (VCU) chiqarildi") },

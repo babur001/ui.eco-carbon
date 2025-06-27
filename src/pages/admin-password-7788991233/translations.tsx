@@ -9,9 +9,10 @@ import { GetServerSideProps, GetStaticProps } from "next";
 import { db } from "@/server/app";
 import AdminLayout from "@/components/pages/admin-layout";
 import { minutesToSeconds } from "@/utils/minutes-to-seconds";
+import { desc } from "drizzle-orm";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res_translations = await db.select().from(translations);
+  const res_translations = await db.select().from(translations).orderBy(desc(translations.created_at));
 
   return {
     props: {

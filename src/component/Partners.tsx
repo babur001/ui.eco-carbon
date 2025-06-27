@@ -56,11 +56,7 @@ function Partners() {
         <div className="my-6 text-gray-500 text-center text">
           <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">{t("🤝 Hamkorlarimiz")}</h1>
 
-          <p className="w-full text-gray-500">
-            {t(
-              `Ekocarbon Services MCHJ faoliyatini xalqaro va mahalliy tashkilotlar bilan hamkorlikda olib boradi. Bizning ishonchli hamkorlarimiz quyidagilar:`
-            )}
-          </p>
+          <p className="w-full text-gray-500">{t(`partners-description`)}</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 lg:gap-6">

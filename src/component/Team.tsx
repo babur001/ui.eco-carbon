@@ -5,9 +5,7 @@ import { useTranslations } from "next-intl";
 export default function Team() {
   const t = useTranslations();
 
-  const teamDesc =
-    t(`Ekocarbon Services MCHJ — o'z sohasida tajribaga ega va yuqori malakali mutaxassislar jamoasi. Har bir xodimimiz kompaniya faoliyatining muhim
-          yo'nalishiga mas'ul bo'lib, barqaror rivojlanishimizga hissa qo'shmoqda.`);
+  const teamDesc = t(`team-description`);
 
   const keyingilar = [
     {
