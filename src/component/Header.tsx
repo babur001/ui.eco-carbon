@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel } from "@headlessui/react";
-import { ChevronDown, Home, Info, List, Menu, NotebookPen, PhoneCall, ShieldUser, Wrench, X } from "lucide-react";
+import { Dialog, DialogPanel } from "@headlessui/react";
+import { Menu, X } from "lucide-react";
 import LanguagePicker from "./LanguagePicker";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { company } from "@/utils/contact-details";
 
 export default function Header() {
   const t = useTranslations();
@@ -14,29 +13,23 @@ export default function Header() {
   const { locale } = useRouter();
 
   const menu = [
-    {
-      title: t("Asosiy"),
-      children: [
-        { name: t("Asosiy"), href: "/#main", icon: Home },
-        { name: t("Biz haqimizda"), href: "/#aboutUs", icon: Info },
-        { name: t("Natijalarimiz"), href: "/#results", icon: Wrench },
-        { name: t("Xizmatlar"), href: "/#services", icon: List },
-        { name: t("Bizning jamoa"), href: "/#team", icon: ShieldUser },
-        { name: t("Aloqa"), href: "/#contact", icon: NotebookPen },
-      ],
-    },
-    { title: t("Blog"), href: "/blog", children: [] },
-    { title: t("Aloqa"), href: "/#contact", children: [] },
+    { title: t("Asosiy"), href: "/", children: [] },
+    { title: t("Proektlarimiz"), href: `/${locale}/projects`, children: [] },
+    { title: t("Xizmatlar"), href: `/${locale}/services`, children: [] },
+    { title: t("Bizning jamoa"), href: `/${locale}/team`, children: [] },
+    { title: t("Blog"), href: `/${locale}/blog`, children: [] },
+    { title: t("Aloqa"), href: `/${locale}/contact`, children: [] },
   ];
 
   return (
     <header className="bg-white">
-      <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
+      <nav aria-label="Global" className="flex items-center justify-between p-6">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <img alt={"Logo Alt"} src="/logo.png" className="h-14 w-auto" />
           </Link>
         </div>
+
         <div className="flex gap-5 lg:hidden">
           <LanguagePicker activeLang={locale} />
 
@@ -48,49 +41,19 @@ export default function Header() {
             <Menu aria-hidden="true" className="size-6" />
           </button>
         </div>
-        {menu.map((m) => (
-          <PopoverGroup key={m.title} className="hidden lg:flex lg:gap-x-5">
-            {m.children.length > 0 ? (
-              <Popover className="relative">
-                <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 focus:outline-none focus:ring-0 cursor-pointer hover:bg-gray-100 !pl-3 pr-2 py-1 rounded-md !gap-2">
-                  {m.title}
-                  <ChevronDown aria-hidden="true" className="size-5 flex-none text-black" />
-                </PopoverButton>
-                <PopoverPanel className="absolute top-full -left-8 z-50 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                  <div className="p-4">
-                    {m.children.map((item) => (
-                      <PopoverButton key={item.name} className="group relative flex items-center gap-x-6 rounded-lg p-1 text-sm/6 hover:bg-gray-50">
-                        <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-primary" />
-                        </div>
-                        <div className="flex-auto">
-                          <Link href={item.href} className="block font-semibold text-gray-900">
-                            {item.name}
-                            <span className="absolute inset-0" />
-                          </Link>
-                        </div>
-                      </PopoverButton>
-                    ))}
-                  </div>
-                </PopoverPanel>
-              </Popover>
-            ) : (
-              <Link href={m.href || "#"} className="text-sm/6 font-semibold text-black hover:bg-gray-100 !pl-3 pr-2 py-1 rounded-md !gap-2">
-                {m.title}
-              </Link>
-            )}
-          </PopoverGroup>
-        ))}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-5">
-          <LanguagePicker activeLang={locale} />
 
-          <a
-            className="h-12 px-4 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-medium border border-transparent bg-primary text-white hover:bg-blue-700"
-            href={`tel:${company.tel}`}
-          >
-            <PhoneCall strokeWidth={2} size={16} />
-            {t("Qo'ng'iroq qilish")}
-          </a>
+        <div className="lg:flex items-center justify-between p-6 hidden lg:px-8">
+          {menu.map((m) => (
+            <div key={m.title} className="hidden lg:flex lg:gap-x-3">
+              <a href={m.href || "#"} className="text-sm/6 font-semibold text-black hover:bg-gray-100 !pl-3 pr-2 py-1 rounded-md !gap-2">
+                {m.title}
+              </a>
+            </div>
+          ))}
+
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end ml-5 items-center gap-3">
+            <LanguagePicker activeLang={locale} />
+          </div>
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -110,24 +73,13 @@ export default function Header() {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {menu.map((m) => (
-                  <Disclosure key={m.title} as="div" className="-mx-3">
-                    <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
-                      {m.title}
-                      <ChevronDown aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
-                    </DisclosureButton>
-                    <DisclosurePanel className="mt-2 space-y-2">
-                      {m.children.map((item) => (
-                        <DisclosureButton
-                          key={item.name}
-                          as="a"
-                          href={item.href}
-                          className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                        >
-                          {item.name}
-                        </DisclosureButton>
-                      ))}
-                    </DisclosurePanel>
-                  </Disclosure>
+                  <Link
+                    onClick={() => setMobileMenuOpen(false)}
+                    href={m.href}
+                    className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                  >
+                    {m.title}
+                  </Link>
                 ))}
               </div>
             </div>

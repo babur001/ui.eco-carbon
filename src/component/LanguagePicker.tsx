@@ -24,7 +24,7 @@ export default function LanguagePicker({ activeLang }: { activeLang: any }) {
     <div className="relative inline-block text-left">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex rounded-lg items-center px-4 h-12 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="inline-flex rounded-lg items-center text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none"
       >
         <span className="mr-2">{selectedLanguage.flag}</span>
         <span>{selectedLanguage.name}</span>

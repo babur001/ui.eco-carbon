@@ -15,7 +15,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div id="main" className="px-4 sm:px-6 lg:px-8 pt-10">
+    <div id="main" className="px-4 sm:px-6 pt-10">
       <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-10 md:items-center">
         <div>
           <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight">
