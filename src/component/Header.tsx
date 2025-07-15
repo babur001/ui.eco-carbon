@@ -14,7 +14,7 @@ export default function Header() {
 
   const menu = [
     { title: t("Asosiy"), href: "/", children: [] },
-    { title: t("Proektlarimiz"), href: `/${locale}/projects`, children: [] },
+    { title: t("Proektlar va video lavhalar"), href: `/${locale}/projects`, children: [] },
     { title: t("Xizmatlar"), href: `/${locale}/services`, children: [] },
     { title: t("Bizning jamoa"), href: `/${locale}/team`, children: [] },
     { title: t("Blog"), href: `/${locale}/blog`, children: [] },
