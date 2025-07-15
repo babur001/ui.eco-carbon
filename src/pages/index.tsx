@@ -2,8 +2,6 @@ import { Geist } from "next/font/google";
 import WorkWithUs from "@/component/WorkWithUs";
 import Hero from "@/component/Hero";
 import AboutUs from "@/component/AboutUs";
-import Services from "@/component/Services";
-import Team from "@/component/Team";
 import ContactSection from "@/component/ContactSection";
 import Blog from "@/component/Blog";
 import UzbekistanMap from "@/component/Map";
@@ -58,8 +56,6 @@ export default function Home({ posts, settings }: InferGetStaticPropsType<typeof
       <Hero />
       <AboutUs />
       <WorkWithUs />
-      <Services />
-      <Team />
       <Partners />
       <UzbekistanMap />
       <Blog posts={posts} />
