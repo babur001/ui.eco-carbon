@@ -59,8 +59,8 @@ export default function Projects({ settings }: InferGetStaticPropsType<typeof ge
         <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">{t("Proektlarimiz")}</h2>
       </div>
 
-      <div className="grid grid-cols-12 gap-10">
-        <div className="col-span-6 [&>iframe]:min-h-[350px] [&>iframe]:w-full rounded-lg overflow-hidden">
+      <div className="grid grid-cols-12 gap-10 px-3">
+        <div className="col-span-12 md:col-span-6 [&>iframe]:min-h-[350px] [&>iframe]:w-full rounded-lg overflow-hidden">
           <iframe
             src="https://www.youtube.com/embed/Yi7Rjs2RzJA?si=y2Kfqkoiwanh5Za2"
             title="YouTube video player"
@@ -68,12 +68,38 @@ export default function Projects({ settings }: InferGetStaticPropsType<typeof ge
           ></iframe>
         </div>
 
-        <div className="col-span-6 flex flex-col justify-center">
+        <div className="col-span-12 md:col-span-6 flex flex-col justify-center">
           <h3 className="text-2xl font-bold">Led advanced gas leak detection and repair program</h3>
           <p className="text-xl leading-10">
             Eco carbon-services led advanced gas leak detection and repair program has already found and repaired over 52,000 individual leaks on Uzbekistan’s
             gas distribution system avoiding emissions of almost 8 million tCO2e per year.
           </p>
+        </div>
+      </div>
+
+      <div className="h-[100px]" />
+
+      <div className="grid grid-cols-12 gap-10 px-3">
+        <div className="col-span-12 md:col-span-6 [&>video]:min-h-[350px] [&>video]:w-full rounded-lg overflow-hidden">
+          <video controls src="/project-2.mp4" />
+        </div>
+
+        <div className="col-span-12 md:col-span-6 flex flex-col justify-center">
+          <h3 className="text-2xl font-bold">{t(`project-2-title`)}</h3>
+          <p className="text-xl leading-10">{t(`project-2-desc`)}</p>
+        </div>
+      </div>
+
+      <div className="h-[100px]" />
+
+      <div className="grid grid-cols-12 gap-10 px-3">
+        <div className="col-span-12 md:col-span-6 [&>video]:min-h-[350px] [&>video]:w-full rounded-lg overflow-hidden">
+          <video controls src="/project-3.mp4" />
+        </div>
+
+        <div className="col-span-12 md:col-span-6 flex flex-col justify-center">
+          <h3 className="text-2xl font-bold">{t(`project-3-title`)}</h3>
+          <p className="text-xl leading-10">{t(`project-3-desc`)}</p>
         </div>
       </div>
 
