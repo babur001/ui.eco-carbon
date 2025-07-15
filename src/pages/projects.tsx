@@ -80,7 +80,7 @@ export default function Projects({ settings }: InferGetStaticPropsType<typeof ge
       <div className="h-[100px]" />
 
       <div className="grid grid-cols-12 gap-10 px-3">
-        <div className="col-span-12 md:col-span-6 [&>video]:min-h-[350px] [&>video]:w-full rounded-lg overflow-hidden">
+        <div className="col-span-12 md:col-span-6 [&>video]:min-h-[350px] [&>video]:max-h-[350px]  [&>video]:w-full rounded-lg overflow-hidden">
           <video controls src="/project-2.mp4" />
         </div>
 
@@ -93,7 +93,7 @@ export default function Projects({ settings }: InferGetStaticPropsType<typeof ge
       <div className="h-[100px]" />
 
       <div className="grid grid-cols-12 gap-10 px-3">
-        <div className="col-span-12 md:col-span-6 [&>video]:min-h-[350px] [&>video]:w-full rounded-lg overflow-hidden">
+        <div className="col-span-12 md:col-span-6 [&>video]:min-h-[350px] [&>video]:max-h-[350px]  [&>video]:w-full rounded-lg overflow-hidden">
           <video controls src="/project-3.mp4" />
         </div>
 
