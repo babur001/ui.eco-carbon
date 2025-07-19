@@ -22,7 +22,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       settings: settingsShema,
     },
-    revalidate: minutesToSeconds(5),
   };
 };
 
@@ -94,7 +93,11 @@ export default function SettingsPage({ settings: settingsProp }: { settings: typ
               </div> */}
               <div className="space-y-2">
                 <Label htmlFor="companyName">Korxona nomi</Label>
-                <Input id="companyName" value={settings.companyName} onChange={(e) => setSettings((prev) => ({ ...prev, companyName: e.target.value }))} />
+                <Input
+                  id="companyName"
+                  value={settings.companyName}
+                  onChange={(e) => setSettings((prev) => ({ ...prev, companyName: e.target.value }))}
+                />
               </div>
             </CardContent>
           </Card>
@@ -107,11 +110,20 @@ export default function SettingsPage({ settings: settingsProp }: { settings: typ
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" value={settings.email} onChange={(e) => setSettings((prev) => ({ ...prev, email: e.target.value }))} />
+                <Input
+                  id="email"
+                  type="email"
+                  value={settings.email}
+                  onChange={(e) => setSettings((prev) => ({ ...prev, email: e.target.value }))}
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="phone">Telefon raqam</Label>
-                <Input id="phone" value={settings.phone} onChange={(e) => setSettings((prev) => ({ ...prev, phone: e.target.value }))} />
+                <Input
+                  id="phone"
+                  value={settings.phone}
+                  onChange={(e) => setSettings((prev) => ({ ...prev, phone: e.target.value }))}
+                />
               </div>
             </CardContent>
           </Card>
@@ -169,7 +181,12 @@ export default function SettingsPage({ settings: settingsProp }: { settings: typ
             </CardContent>
           </Card>
 
-          <Button type="submit" size="lg" className="cursor-pointer" disabled={isLoading} onClick={handleSubmit}>
+          <Button
+            type="submit"
+            size="lg"
+            className="cursor-pointer"
+            disabled={isLoading}
+            onClick={handleSubmit}>
             {isLoading ? (
               <Loader className="animate-spin" />
             ) : (
