@@ -19,11 +19,14 @@ export default function Hero() {
       <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-10 md:items-center">
         <div>
           <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-4xl lg:leading-tight">
-            {t("Atrof-muhit uchun")} – <span className="text-primary block">{t("innovatsion yechimlar bilan")}!</span>
+            {t("Atrof-muhit uchun")} –{" "}
+            <span className="text-primary block">
+              {t("innovatsion yechimlar bilan")}!
+            </span>
           </h1>
           <p className="mt-3 text-base text-gray-800">{t(`main_sub_title`)}</p>
 
-          <div className="mt-7 grid gap-3 w-full sm:inline-flex">
+          {/* <div className="mt-7 grid gap-3 w-full sm:inline-flex">
             <a
               className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-primary text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
               href={`tel:${company.tel}`}
@@ -31,7 +34,7 @@ export default function Hero() {
               <PhoneCall strokeWidth={2} size={16} />
               {t("Qo'ng'iroq qilish")}
             </a>
-          </div>
+          </div> */}
         </div>
 
         <div className="relative pb-5">
