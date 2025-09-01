@@ -1,7 +1,6 @@
 import { Check } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import i18next from "i18next";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
@@ -41,9 +40,7 @@ export default function AboutUs() {
                     <Check />
                   </span>
 
-                  <div className="grow">
-                    <span className="text-sm sm:text-base text-gray-500">{pro.title}</span>
-                  </div>
+                  <div className="grow">{pro.title}</div>
                 </li>
               );
             })}

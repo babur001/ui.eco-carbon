@@ -1,4 +1,3 @@
-import i18next from "i18next";
 import React from "react";
 import { useTranslations } from "next-intl";
 
@@ -69,14 +68,22 @@ export default function Team() {
   return (
     <div id="team" className="px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <div className="mx-auto text-center mb-10 lg:mb-14">
-        <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">👥 {t("Bizning Jamoa")}</h2>
-        <p className="mt-1 w-full md:w-2/3 text-center text-sm md:text-base mx-auto text-gray-600">{teamDesc}</p>
+        <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">
+          👥 {t("Bizning Jamoa")}
+        </h2>
+        <p className="mt-1 w-full md:w-2/3 text-center text-sm md:text-base mx-auto text-gray-600">
+          {teamDesc}
+        </p>
       </div>
 
       <div className="flex items-start flex-wrap justify-center gap-8 md:gap-10">
         {keyingilar.map((member, index) => (
           <div key={index} className="text-center w-full md:w-2/12">
-            <img className="rounded-lg object-contain size-24 mx-auto" src={member.img} alt="Avatar" />
+            <img
+              className="rounded-lg object-contain size-24 mx-auto"
+              src={member.img}
+              alt="Avatar"
+            />
             <div className="mt-2 sm:mt-4">
               <h3 className="font-medium text-sm text-gray-800">{member.fullName}</h3>
               <p className="text-sm text-gray-600">{member.role}</p>

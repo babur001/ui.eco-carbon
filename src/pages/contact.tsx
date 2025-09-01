@@ -41,7 +41,9 @@ export const getStaticProps: GetStaticProps<IHomeProps> = async (context) => {
   };
 };
 
-export default function Contact({ settings }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Contact({
+  settings,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout className={geistSans.className}>
       <ContactSection settings={settings} />

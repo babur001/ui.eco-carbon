@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     // Assuming you have a function to update the translation in your database
-    const updateTranslation = await db.update(settings).set(body).execute();
+    const updateTranslation = await db.update(settings).set(body).returning();
 
     return res.status(200).json({ success: true });
   } catch (error) {

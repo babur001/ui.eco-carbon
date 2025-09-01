@@ -1,19 +1,11 @@
 import { Geist } from "next/font/google";
-import WorkWithUs from "@/component/WorkWithUs";
-import Hero from "@/component/Hero";
-import AboutUs from "@/component/AboutUs";
-import Services from "@/component/Services";
-import Team from "@/component/Team";
 import ContactSection from "@/component/ContactSection";
-import Blog from "@/component/Blog";
-import UzbekistanMap from "@/component/Map";
 import Layout from "@/component/Layout";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import axios from "axios";
 import { get } from "lodash";
 import { db } from "@/server/app";
-import { blogs, settings as settingsSchema } from "@/server/db/schema";
-import Partners from "@/component/Partners";
+import { settings as settingsSchema } from "@/server/db/schema";
 import { minutesToSeconds } from "@/utils/minutes-to-seconds";
 import { useTranslations } from "next-intl";
 
@@ -50,13 +42,17 @@ export const getStaticProps: GetStaticProps<IHomeProps> = async (context) => {
   };
 };
 
-export default function Projects({ settings }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Projects({
+  settings,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const t = useTranslations();
 
   return (
     <Layout className={geistSans.className}>
       <div className="mx-auto text-center mb-10 lg:mb-14">
-        <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">{t("Proektlarimiz")}</h2>
+        <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">
+          {t("Proektlarimiz")}
+        </h2>
       </div>
 
       <div className="grid grid-cols-12 gap-10 px-3">
@@ -69,11 +65,8 @@ export default function Projects({ settings }: InferGetStaticPropsType<typeof ge
         </div>
 
         <div className="col-span-12 md:col-span-6 flex flex-col justify-center">
-          <h3 className="text-2xl font-bold">Led advanced gas leak detection and repair program</h3>
-          <p className="text-xl leading-10">
-            Eco carbon-services led advanced gas leak detection and repair program has already found and repaired over 52,000 individual leaks on Uzbekistan’s
-            gas distribution system avoiding emissions of almost 8 million tCO2e per year.
-          </p>
+          <h3 className="text-2xl font-bold">{t(`project-1-title`)}</h3>
+          <p className="text-xl leading-10">{t(`project-1-desc`)}</p>
         </div>
       </div>
 

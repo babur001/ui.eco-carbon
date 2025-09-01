@@ -24,12 +24,28 @@ const partners = [
     title: "Hududgaztaminot AJ",
     imgUrl: "/partners/hududgaz.jpg",
   },
+  {
+    isGlobal: false,
+    title: "Iqtisodiyot va Moliya Vazirligi",
+    imgUrl: "/partners/gerb.jpg",
+  },
+  {
+    isGlobal: false,
+    title: "O'zbekiston Respublikasi Energetika Vazirligi",
+    imgUrl: "/partners/gerb2.jpg",
+  },
 ];
 
 function Partners() {
   const t = useTranslations();
 
-  const PartnersListing = ({ isGlobal, partners }: { isGlobal: boolean; partners: { isGlobal: boolean; title: string; imgUrl?: string }[] }) => {
+  const PartnersListing = ({
+    isGlobal,
+    partners,
+  }: {
+    isGlobal: boolean;
+    partners: { isGlobal: boolean; title: string; imgUrl?: string }[];
+  }) => {
     return (
       <>
         <div className="w-full flex items-center justify-center bg-gray-100 rounded-lg uppercase text-center">
@@ -38,9 +54,16 @@ function Partners() {
 
         {partners.map((partner) => {
           return (
-            <div key={partner.title} className="w-full bg-gray-50 aspect-square flex items-center justify-center rounded-lg uppercase text-center">
+            <div
+              key={partner.title}
+              className="w-full bg-gray-50 aspect-square flex items-center justify-center rounded-lg uppercase text-center"
+            >
               {partner.imgUrl ? (
-                <img src={partner.imgUrl} alt={partner.title} className="w-full h-full object-contain" />
+                <img
+                  src={partner.imgUrl}
+                  alt={partner.title}
+                  className="w-full h-full object-contain"
+                />
               ) : (
                 <p className="text-xs px-2">{partner.title}</p>
               )}
@@ -54,19 +77,27 @@ function Partners() {
     <>
       <div className="py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div className="my-6 text-gray-500 text-center text">
-          <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">{t("🤝 Hamkorlarimiz")}</h1>
+          <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+            {t("🤝 Hamkorlarimiz")}
+          </h1>
 
           <p className="w-full text-gray-500">{t(`partners-description`)}</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 lg:gap-6">
-          <PartnersListing isGlobal={true} partners={partners.filter((partner) => partner.isGlobal)} />
+          <PartnersListing
+            isGlobal={true}
+            partners={partners.filter((partner) => partner.isGlobal)}
+          />
         </div>
 
         <div className="h-[20px]" />
 
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 lg:gap-6">
-          <PartnersListing isGlobal={false} partners={partners.filter((partner) => !partner.isGlobal)} />
+          <PartnersListing
+            isGlobal={false}
+            partners={partners.filter((partner) => !partner.isGlobal)}
+          />
         </div>
       </div>
     </>
