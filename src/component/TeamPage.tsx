@@ -15,7 +15,7 @@ export default function TeamPage() {
       isExecutive: true,
     },
     {
-      img: `/people/tb.jpg`,
+      img: `/people/muxandis-1.jpg`,
       role: t(`Bosh muhandis (boshqa sohalar bo'yicha)`),
       fullName: `MAMATOV ISTAM UKTAMOVICH`,
       desc: t(`chief-engineer-desc`),
@@ -53,7 +53,7 @@ export default function TeamPage() {
       desc: t(`Tayyor mahsulotlar harakati va saqlash nazorati `),
     },
     {
-      img: `/people/muxandis-1.jpg`,
+      img: `/people/tb.jpg`,
       role: t(`Texnika xavfsizligi bo'yicha muhandis`),
       fullName: `BIKKULOV ANVAR BORISOVICH`,
       desc: t(`Ish jarayonidagi xavfsizlik choralarini kuzatish va nazorat qilish `),
