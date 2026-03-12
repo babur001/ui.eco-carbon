@@ -8,7 +8,7 @@ export default function TeamPage() {
 
   const keyingilar = [
     {
-      img: `/logo.png`,
+      img: `/people/aziz.jpg`,
       role: t(`Bosh direktor`),
       fullName: `ABDUJABBAROV AZIZ ABDUSATTAROVICH`,
       desc: t(`general-director-desc`),
