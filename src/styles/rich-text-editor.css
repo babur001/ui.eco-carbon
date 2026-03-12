@@ -1,3 +1,5 @@
+@reference "./globals.css";
+
 @import "./partials/code.css";
 @import "./partials/placeholder.css";
 @import "./partials/lists.css";
