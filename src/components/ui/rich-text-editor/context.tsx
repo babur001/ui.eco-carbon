@@ -15,7 +15,9 @@ type RichTextEditorContextProps = {
   editor: Editor | null;
 };
 
-const RichTextEditorContext = React.createContext<RichTextEditorContextProps | null>(null);
+const RichTextEditorContext = React.createContext<RichTextEditorContextProps | null>(
+  null,
+);
 
 function useRichTextEditorContext() {
   const context = React.useContext(RichTextEditorContext);
@@ -33,7 +35,10 @@ type RichTextEditorProviderProps = {
   children: React.ReactNode;
 } & RichTextEditorOptions;
 
-const RichTextEditorProvider = ({ children, ...options }: RichTextEditorProviderProps) => {
+const RichTextEditorProvider = ({
+  children,
+  ...options
+}: RichTextEditorProviderProps) => {
   const editorUpdateTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const onUpdate = React.useCallback(
@@ -45,7 +50,7 @@ const RichTextEditorProvider = ({ children, ...options }: RichTextEditorProvider
         options.onChange(editor.getHTML());
       }, 100);
     },
-    [options.onChange]
+    [options.onChange],
   );
 
   React.useEffect(() => {
@@ -63,7 +68,7 @@ const RichTextEditorProvider = ({ children, ...options }: RichTextEditorProvider
         placeholder: options.placeholder || "",
       }),
     ],
-    [options.placeholder]
+    [options.placeholder],
   );
 
   const editor = useEditor(
@@ -72,16 +77,18 @@ const RichTextEditorProvider = ({ children, ...options }: RichTextEditorProvider
       extensions: [...defaultExtensions, ...(options.extensions || [])],
       content: options.value, // Set initial content; subsequent updates handled via effect below
       onUpdate: onUpdate,
-      immediatelyRender: options.immediatelyRender !== undefined ? options.immediatelyRender : false,
+      immediatelyRender:
+        options.immediatelyRender !== undefined ? options.immediatelyRender : false,
       editorProps: {
         ...(options.editorProps || {}),
         attributes: {
           ...(options.editorProps?.attributes || {}),
-          class: "focus:outline-none focus-visible:outline-none [&>*:first-child]:mt-0 max-w-none h-full px-4 py-2",
+          class:
+            "focus:outline-none focus-visible:outline-none [&>*:first-child]:mt-0 max-w-none h-full px-4 py-2",
         },
       },
     },
-    [options.placeholder]
+    [options.placeholder],
   );
 
   // This useEffect ensures that the editor's content stays in sync with the external value prop.
@@ -90,12 +97,20 @@ const RichTextEditorProvider = ({ children, ...options }: RichTextEditorProvider
   React.useEffect(() => {
     if (editor && editor.getHTML() !== options.value) {
       if (!editor.isFocused) {
+        // @ts-ignore
         editor.commands.setContent(options.value, false);
       }
     }
   }, [editor, options.value]);
 
-  return <RichTextEditorContext.Provider value={{ editor }}>{children}</RichTextEditorContext.Provider>;
+  return (
+    <RichTextEditorContext.Provider value={{ editor }}>
+      {children}
+    </RichTextEditorContext.Provider>
+  );
 };
 
-export { RichTextEditorProvider as _RichTextEditorProvider, useRichTextEditorContext as _useRichTextEditorContext };
+export {
+  RichTextEditorProvider as _RichTextEditorProvider,
+  useRichTextEditorContext as _useRichTextEditorContext,
+};
